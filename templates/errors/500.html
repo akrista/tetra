@@ -1,0 +1,11 @@
+{% extends 'errors/illustrated_layout.html' %}
+
+{% block title %}Server Error{% endblock %}
+{% block code %}500{% endblock %}
+{% block message %}Whoops, something went wrong on our servers.{% endblock %}
+
+{% block image %}
+    <div style="background-image: url('/static/svg/500.svg');"
+        class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
+    </div>
+{% endblock %}

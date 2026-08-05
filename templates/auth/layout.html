@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>{% block title %}Sign In — Keystone{% endblock %}</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=sora:400,500,600;display=swap" rel="stylesheet">
+    <style>
+        {% raw %}
+        :root {
+            --bg: #fbfaf8;
+            --fg: #14181e;
+            --muted: #5e626a;
+            --card: #ffffff;
+            --border: rgba(20, 24, 30, .12);
+            --accent: #6d4fe3;
+            --accent-hover: #583cc4;
+            --accent-strong: #4a33a6;
+            --glow: rgba(109, 79, 227, .07);
+            --error: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fca5a5;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #14181e;
+                --fg: #e6e8eb;
+                --muted: #9aa0a8;
+                --card: #1c2128;
+                --border: #232a33;
+                --accent: #9c82f2;
+                --accent-hover: #8365ea;
+                --accent-strong: #c9bbff;
+                --glow: rgba(156, 130, 242, .08);
+                --error: #f87171;
+                --error-bg: #2c1616;
+                --error-border: #7f1d1d;
+            }
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: 'Sora', ui-sans-serif, system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .auth-container {
+            display: flex;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /* Left Side Brand & Code Showcase */
+        .auth-showcase {
+            display: none;
+            width: 50%;
+            background: #14181e;
+            color: #e6e8eb;
+            padding: 4rem;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid #232a33;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-showcase::after {
+            content: '';
+            position: absolute;
+            top: -10rem;
+            left: -10rem;
+            width: 40rem;
+            height: 40rem;
+            background: radial-gradient(circle, rgba(156, 130, 242, .12), transparent 70%);
+            pointer-events: none;
+        }
+
+        @media (min-width: 1024px) {
+            .auth-showcase { display: flex; }
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: -.02em;
+        }
+
+        .code-box {
+            background: #1c2128;
+            border: 1px solid #232a33;
+            border-radius: .75rem;
+            padding: 1.5rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: .875rem;
+            line-height: 1.7;
+            color: #9aa0a8;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .2);
+        }
+
+        .code-box .keyword { color: #9c82f2; font-weight: 600; }
+        .code-box .string { color: #4ade80; }
+        .code-box .comment { color: #5e626a; font-style: italic; }
+
+        /* Right Side Form Pane */
+        .auth-form-pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 26rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: .875rem;
+            padding: 2.25rem 2rem;
+        }
+
+        .auth-title {
+            margin: 0 0 .5rem;
+            font-size: 1.65rem;
+            font-weight: 600;
+            letter-spacing: -.025em;
+        }
+
+        .auth-subtitle {
+            margin: 0 0 1.75rem;
+            color: var(--muted);
+            font-size: .925rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: .4rem;
+            font-size: .875rem;
+            font-weight: 500;
+            color: var(--fg);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: .7rem .9rem;
+            font-family: inherit;
+            font-size: .925rem;
+            color: var(--fg);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: .5rem;
+            transition: border-color .15s ease, box-shadow .15s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--glow);
+        }
+
+        .form-input[aria-invalid="true"] {
+            border-color: var(--error);
+        }
+
+        .error-message {
+            margin-top: .35rem;
+            font-size: .8rem;
+            color: var(--error);
+        }
+
+        .alert-banner {
+            background: var(--error-bg);
+            border: 1px solid var(--error-border);
+            color: var(--error);
+            border-radius: .5rem;
+            padding: .75rem 1rem;
+            font-size: .875rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: .75rem 1.25rem;
+            font-family: inherit;
+            font-size: .95rem;
+            font-weight: 600;
+            color: #ffffff;
+            background: var(--accent);
+            border: none;
+            border-radius: .5rem;
+            cursor: pointer;
+            transition: background-color .15s ease, transform .15s ease;
+        }
+
+        .btn-primary:hover, .btn-primary:focus-visible {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+
+        .auth-footer-links {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: .875rem;
+            color: var(--muted);
+        }
+
+        .auth-footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn-primary, .form-input { transition: none; }
+        }
+        {% endraw %}
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Left Brand & Showcase Pane -->
+        <div class="auth-showcase">
+            <div class="brand-header">
+                <svg width="36" height="36" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="Masonite logo">
+                    <polygon points="60,16 14,80 60,104" fill="#9C82F2" />
+                    <polygon points="60,16 106,80 60,104" fill="#4A33A6" />
+                    <line x1="60" y1="16" x2="60" y2="104" stroke="#C9BBFF" stroke-width="2.5" opacity=".5" />
+                </svg>
+                Masonite Keystone
+            </div>
+
+            <div>
+                <h2 style="font-size: 2rem; font-weight: 600; margin: 0 0 1rem; line-height: 1.25;">
+                    Engineered for velocity &amp; clean code.
+                </h2>
+                <p style="color: #9aa0a8; font-size: 1.05rem; margin: 0 0 1.5rem; max-width: 28rem;">
+                    Full-stack authentication boilerplate powered by Masonite 5, Tailwind CSS v4, and Python 3.14.
+                </p>
+
+                <div class="code-box">
+                    <span class="comment"># routes/web.py</span><br>
+                    <span class="keyword">from</span> masonite.routes <span class="keyword">import</span> Route<br><br>
+                    ROUTES = [<br>
+                    &nbsp;&nbsp;Route.get(<span class="string">"/login"</span>, <span class="string">"AuthController@show_login"</span>),<br>
+                    &nbsp;&nbsp;Route.post(<span class="string">"/login"</span>, <span class="string">"AuthController@login"</span>),<br>
+                    ]
+                </div>
+            </div>
+
+            <div style="color: #5e626a; font-size: .85rem;">
+                &copy; {{ now().year if now else '2026' }} Keystone Project &middot; Masonite Framework
+            </div>
+        </div>
+
+        <!-- Right Form Pane -->
+        <main class="auth-form-pane">
+            <div class="auth-card">
+                {% block auth_content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>
