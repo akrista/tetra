@@ -1,4 +1,5 @@
 from masonite.providers import Provider
+from masonite.request import Request
 
 
 class AppProvider(Provider):
@@ -9,4 +10,4 @@ class AppProvider(Provider):
         pass
 
     def boot(self):
-        pass
+        Request.tenant = lambda self: getattr(self, "_tenant", None)

@@ -1,14 +1,14 @@
 {% extends 'auth/layout.html' %}
 
-{% block title %}Create Account — Keystone{% endblock %}
+{% block title %}Crear negocio — Tetra{% endblock %}
 
 {% block auth_content %}
-<h1 class="auth-title">Create account</h1>
-<p class="auth-subtitle">Get started with your Keystone application</p>
+<h1 class="auth-title">Crear negocio</h1>
+<p class="auth-subtitle">Pon en marcha tu espacio de trabajo en segundos</p>
 
 {% if errors and errors.has('register') %}
 <div class="alert-banner" role="alert">
-    {{ errors.get('register')[0] if errors.get('register') is list else errors.get('register') }}
+    {{ errors.get('register')[0] if errors.get('register') is not string else errors.get('register') }}
 </div>
 {% endif %}
 
@@ -16,78 +16,97 @@
     {{ csrf_field }}
 
     <div class="form-group">
-        <label for="name" class="form-label">Full name</label>
-        <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            class="form-input" 
-            placeholder="Jane Doe" 
-            value="{{ old('name', '') }}" 
-            required 
+        <label for="tenant_name" class="form-label">Nombre de la organización</label>
+        <input
+            type="text"
+            id="tenant_name"
+            name="tenant_name"
+            class="form-input"
+            placeholder="Mi Negocio, C.A."
+            value="{{ old('tenant_name', '') }}"
+            required
             autofocus
-            {% if errors and errors.has('name') %}aria-invalid="true" aria-describedby="name-error"{% endif %}
+            {% if errors and errors.has('tenant_name') %}aria-invalid="true" aria-describedby="tenant_name-error"{% endif %}
         >
-        {% if errors and errors.has('name') %}
-        <div id="name-error" class="error-message">
-            {{ errors.get('name')[0] if errors.get('name') is list else errors.get('name') }}
+        {% if errors and errors.has('tenant_name') %}
+        <div id="tenant_name-error" class="error-message">
+            {{ errors.get('tenant_name')[0] if errors.get('tenant_name') is not string else errors.get('tenant_name') }}
         </div>
         {% endif %}
     </div>
 
     <div class="form-group">
-        <label for="email" class="form-label">Email address</label>
-        <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            class="form-input" 
-            placeholder="you@example.com" 
-            value="{{ old('email', '') }}" 
+        <label for="name" class="form-label">Tu nombre</label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-input"
+            placeholder="María González"
+            value="{{ old('name', '') }}"
+            required
+            {% if errors and errors.has('name') %}aria-invalid="true" aria-describedby="name-error"{% endif %}
+        >
+        {% if errors and errors.has('name') %}
+        <div id="name-error" class="error-message">
+            {{ errors.get('name')[0] if errors.get('name') is not string else errors.get('name') }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            placeholder="tu@empresa.com"
+            value="{{ old('email', '') }}"
             required
             {% if errors and errors.has('email') %}aria-invalid="true" aria-describedby="email-error"{% endif %}
         >
         {% if errors and errors.has('email') %}
         <div id="email-error" class="error-message">
-            {{ errors.get('email')[0] if errors.get('email') is list else errors.get('email') }}
+            {{ errors.get('email')[0] if errors.get('email') is not string else errors.get('email') }}
         </div>
         {% endif %}
     </div>
 
     <div class="form-group">
-        <label for="password" class="form-label">Password</label>
-        <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            class="form-input" 
-            placeholder="Minimum 8 characters" 
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-input"
+            placeholder="Mínimo 8 caracteres"
             required
             {% if errors and errors.has('password') %}aria-invalid="true" aria-describedby="password-error"{% endif %}
         >
         {% if errors and errors.has('password') %}
         <div id="password-error" class="error-message">
-            {{ errors.get('password')[0] if errors.get('password') is list else errors.get('password') }}
+            {{ errors.get('password')[0] if errors.get('password') is not string else errors.get('password') }}
         </div>
         {% endif %}
     </div>
 
     <div class="form-group">
-        <label for="password_confirmation" class="form-label">Confirm password</label>
-        <input 
-            type="password" 
-            id="password_confirmation" 
-            name="password_confirmation" 
-            class="form-input" 
-            placeholder="Re-enter password" 
+        <label for="password_confirmation" class="form-label">Confirmar contraseña</label>
+        <input
+            type="password"
+            id="password_confirmation"
+            name="password_confirmation"
+            class="form-input"
+            placeholder="Repite tu contraseña"
             required
         >
     </div>
 
-    <button type="submit" class="btn-primary" style="margin-top: .5rem;">Create Account</button>
+    <button type="submit" class="btn" style="margin-top: .5rem;">Crear negocio</button>
 
     <div class="auth-footer-links">
-        Already have an account? <a href="/login">Sign in</a>
+        ¿Ya tienes cuenta? <a href="/login">Entrar</a>
     </div>
 </form>
 {% endblock %}

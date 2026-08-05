@@ -1,11 +1,5 @@
 {% extends 'errors/illustrated_layout.html' %}
 
-{% block title %}Page Expired{% endblock %}
+{% block title %}Sesión vencida{% endblock %}
 {% block code %}419{% endblock %}
-{% block message %}Sorry, your session has expired. Please refresh and try again.{% endblock %}
-
-{% block image %}
-    <div style="background-image: url('/static/svg/403.svg');"
-        class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
-    </div>
-{% endblock %}
+{% block message %}Tu sesión expiró. Refresca la página e inténtalo de nuevo.{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'emails/layout.html' %}
+{% block email_content %}
+<h1>Verifica tu correo</h1>
+<p>Hola {{ name }},</p>
+<p>Haz clic en el botón para verificar tu correo y activar tu espacio Tetra.</p>
+<p style="margin: 1.5rem 0;">
+    <a href="{{ verify_url }}" class="btn">Verificar correo</a>
+</p>
+<p class="muted">Si el botón no funciona, pega esta URL en tu navegador:</p>
+<p class="url">{{ verify_url }}</p>
+<p class="muted">Si no creaste una cuenta Tetra, ignora este correo.</p>
+{% endblock %}

@@ -1,11 +1,5 @@
 {% extends 'errors/illustrated_layout.html' %}
 
-{% block title %}Too Many Requests{% endblock %}
+{% block title %}Demasiadas peticiones{% endblock %}
 {% block code %}429{% endblock %}
-{% block message %}Sorry, you are making too many requests to our servers.{% endblock %}
-
-{% block image %}
-    <div style="background-image: url('/static/svg/403.svg');"
-        class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
-    </div>
-{% endblock %}
+{% block message %}Estás haciendo demasiadas peticiones. Espera un momento e inténtalo de nuevo.{% endblock %}

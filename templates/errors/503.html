@@ -1,11 +1,5 @@
 {% extends 'errors/illustrated_layout.html' %}
 
-{% block title %}Service Unavailable{% endblock %}
+{% block title %}Servicio no disponible{% endblock %}
 {% block code %}503{% endblock %}
-{% block message %}Service Unavailable{% endblock %}
-
-{% block image %}
-    <div style="background-image: url('/static/svg/503.svg');"
-        class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
-    </div>
-{% endblock %}
+{% block message %}El servicio no está disponible en este momento. Inténtalo de nuevo más tarde.{% endblock %}

@@ -19,7 +19,10 @@ package-lock.json
 yarn.lock
 
 # compiled assets
-storage/compiled/
+storage/compiled/*
+!storage/compiled/.gitkeep
+resources/js/.vite/*
+!resources/js/.vite/.gitkeep
 
 # editors
 .vscode/

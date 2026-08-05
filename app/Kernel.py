@@ -20,6 +20,7 @@ from masonite.utils.location import base_path
 from masonite.utils.structures import load
 
 from app.middlewares.AuthenticationMiddleware import AuthenticationMiddleware
+from app.middlewares.TenantContextMiddleware import TenantContextMiddleware
 from app.middlewares.VerifyCsrfToken import VerifyCsrfToken
 
 
@@ -36,6 +37,7 @@ class Kernel:
             SessionMiddleware,
             ShareErrorsInSessionMiddleware,
             LoadUserMiddleware,
+            TenantContextMiddleware,
             VerifyCsrfToken,
         ],
         "auth": [AuthenticationMiddleware],

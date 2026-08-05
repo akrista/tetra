@@ -1,11 +1,5 @@
 {% extends 'errors/illustrated_layout.html' %}
 
-{% block title %}Forbidden{% endblock %}
+{% block title %}Prohibido{% endblock %}
 {% block code %}403{% endblock %}
-{% block message %}Sorry, you are forbidden from accessing this page.{% endblock %}
-
-{% block image %}
-    <div style="background-image: url('/static/svg/403.svg');"
-        class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
-    </div>
-{% endblock %}
+{% block message %}No tienes permitido acceder a esta página.{% endblock %}

@@ -1,192 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <title>{% block title %}{% endblock %} - Masonite</title>
-
+    <title>{% block title %}{% endblock %} - Tetra</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <style>
-        {% raw %}
-        :root {
-            --bg: #fbfaf8;
-            --fg: #14181e;
-            --muted: #5e626a;
-            --border: rgba(20, 24, 30, 0.12);
-            --card-bg: #ffffff;
-            --button-hover: #f1efea;
-            --accent-line: #6366f1;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #14181e;
-                --fg: #e6e8eb;
-                --muted: #9aa0a8;
-                --border: #232a33;
-                --card-bg: #1a2028;
-                --button-hover: #232c37;
-                --accent-line: #818cf8;
-            }
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body {
-            height: 100%;
-            background-color: var(--bg);
-            color: var(--fg);
-            font-family: 'Sora', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .layout-container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        @media (min-width: 768px) {
-            .layout-container {
-                flex-direction: row;
-            }
-        }
-
-        .content-section {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background-color: var(--bg);
-        }
-
-        @media (min-width: 768px) {
-            .content-section {
-                width: 50%;
-                padding: 4rem;
-            }
-        }
-
-        .content-box {
-            max-width: 28rem;
-            width: 100%;
-        }
-
-        .error-code {
-            font-size: clamp(3.5rem, 8vw, 7.5rem);
-            font-weight: 900;
-            line-height: 1;
-            letter-spacing: -0.03em;
-            color: var(--fg);
-        }
-
-        .accent-bar {
-            width: 3.5rem;
-            height: 0.25rem;
-            background-color: var(--accent-line);
-            margin: 1rem 0 1.5rem 0;
-            border-radius: 2px;
-        }
-
-        .error-message {
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
-            font-weight: 300;
-            color: var(--muted);
-            line-height: 1.4;
-            margin-bottom: 2rem;
-        }
-
-        .home-button {
-            display: inline-block;
-            text-decoration: none;
-            background-color: var(--card-bg);
-            color: var(--fg);
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 0.85rem 1.75rem;
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
-            cursor: pointer;
-        }
-
-        .home-button:hover {
-            background-color: var(--button-hover);
-            border-color: var(--fg);
-        }
-
-        .home-button:active {
-            transform: scale(0.98);
-        }
-
-        .image-section {
-            position: relative;
-            width: 100%;
-            min-height: 300px;
-            overflow: hidden;
-        }
-
-        @media (min-width: 768px) {
-            .image-section {
-                width: 50%;
-                min-height: 100vh;
-            }
-        }
-
-        .image-section .pin {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        {% endraw %}
-    </style>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="/static/css/app.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="layout-container">
-        <div class="content-section">
-            <div class="content-box">
-                <div class="error-code">
-                    {% block code %}Oh no{% endblock %}
-                </div>
+<body class="wall">
+    <a class="standalone-brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="20,3 3,28 20,37" fill="#f1ead6" />
+            <polygon points="20,3 37,28 20,37" fill="#e0a020" />
+        </svg>
+        Tetra
+    </a>
 
-                <div class="accent-bar"></div>
-
-                <p class="error-message">
-                    {% block message %}{% endblock %}
-                </p>
-
-                <a href="/" class="home-button">
-                    Go Home
-                </a>
-            </div>
+    <main class="standalone">
+        <p class="error-code">{% block code %}Oh no{% endblock %}</p>
+        <div class="error-bar" aria-hidden="true"></div>
+        <p class="error-msg">{% block message %}{% endblock %}</p>
+        <div class="standalone-actions">
+            <a href="/" class="cta">Volver al inicio</a>
         </div>
-
-        <div class="image-section">
-            {% block image %}{% endblock %}
-        </div>
-    </div>
+    </main>
 </body>
 
 </html>

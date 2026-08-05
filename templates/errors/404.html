@@ -1,11 +1,5 @@
 {% extends 'errors/illustrated_layout.html' %}
 
-{% block title %}Page Not Found{% endblock %}
+{% block title %}No encontrado{% endblock %}
 {% block code %}404{% endblock %}
-{% block message %}Sorry, the page you are looking for could not be found.{% endblock %}
-
-{% block image %}
-    <div style="background-image: url('/static/svg/404.svg');"
-        class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
-    </div>
-{% endblock %}
+{% block message %}No encontramos la página que buscas.{% endblock %}
