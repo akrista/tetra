@@ -13,6 +13,7 @@ from masonite.middleware import (
     SessionMiddleware,
     ShareErrorsInSessionMiddleware,
     ThrottleRequestsMiddleware,
+    VerifyCsrfToken,
 )
 from masonite.routes import Route
 from masonite.storage import StorageCapsule
@@ -22,7 +23,6 @@ from masonite.utils.structures import load
 from app.middlewares.AuthenticationMiddleware import AuthenticationMiddleware
 from app.middlewares.PermissionMiddleware import PermissionMiddleware
 from app.middlewares.TenantContextMiddleware import TenantContextMiddleware
-from app.middlewares.VerifyCsrfToken import VerifyCsrfToken
 
 
 class Kernel:

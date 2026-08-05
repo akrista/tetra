@@ -138,10 +138,7 @@ class AuthController(Controller):
             return response.redirect("/password/forgot").with_errors(errors)
 
         email = request.input("email")
-        result = auth.password_reset(email)
-        _, token = (None, None)
-        if result:
-            _, token = result
+        _, token = auth.password_reset(email) or (None, None)
         if token:
             user = User.where("email", email).first()
             if user:

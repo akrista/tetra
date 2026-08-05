@@ -151,7 +151,7 @@ class RoleController(Controller):
             from databases.seeds.permission_table_seeder import PERMISSIONS
 
             return [SimpleNamespace(slug=slug, name=name) for slug, name in PERMISSIONS]
-        return [p for p in perms if user.is_owner or user.has_permission(p.slug)]
+        return [p for p in perms if user.is_owner or user.can(p.slug)]
 
     def _sync_permissions(self, request, user, role):
         builder = request.app.make("builder").new()
@@ -160,7 +160,7 @@ class RoleController(Controller):
         if isinstance(selected, str):
             selected = [selected]
         for slug in selected:
-            if not slug or not (user.is_owner or user.has_permission(slug)):
+            if not slug or not (user.is_owner or user.can(slug)):
                 continue
             perm = Permission.where("slug", slug).first()
             if not perm:

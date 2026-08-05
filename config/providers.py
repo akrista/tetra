@@ -25,7 +25,6 @@ from masonite.scheduling.providers import ScheduleProvider
 from masonite.validation.providers import ValidationProvider
 
 # from masonite.api.providers import ApiProvider
-from app.providers.AppProvider import AppProvider
 
 PROVIDERS = [
     FrameworkProvider,
@@ -52,5 +51,4 @@ PROVIDERS = [
     ORMProvider,
     LoggingProvider,
     # ApiProvider,
-    AppProvider,
 ]

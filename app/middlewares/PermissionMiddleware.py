@@ -11,7 +11,7 @@ class PermissionMiddleware(Middleware):
         user = request.user()
         if not user:
             return response.redirect(name="login")
-        if user.has_permission(args[0]):
+        if user.can(args[0]):
             return request
         return response.redirect(name="dashboard")
 

@@ -3,13 +3,12 @@
 from typing import ClassVar
 
 from masonite.authentication import Authenticates
-from masonite.authorization import Authorizes
 from masonite.notification import Notifiable
 from masoniteorm.models import Model
 from masoniteorm.relationships import belongs_to, belongs_to_many
 
 
-class User(Model, Authenticates, Authorizes, Notifiable):
+class User(Model, Authenticates, Notifiable):
     """User Model. One row per human; tenant-scoped via tenant_id."""
 
     __fillable__: ClassVar[list[str]] = [
@@ -48,13 +47,10 @@ class User(Model, Authenticates, Authorizes, Notifiable):
                 slugs.add(permission.slug)
         return slugs
 
-    def has_permission(self, slug: str) -> bool:
+    def can(self, slug: str) -> bool:
         if self.is_owner:
             return True
         return slug in self.permission_slugs()
-
-    def can(self, slug: str) -> bool:
-        return self.has_permission(slug)
 
     def role_names(self) -> list[str]:
         return [role.name for role in self.roles]
