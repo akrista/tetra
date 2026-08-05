@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetra — La factura que se diseña</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="/static/css/app.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wall">
+        <div class="legacy-ghost" id="legacyGhost" aria-hidden="true"></div>
+
+        <header class="topbar">
+            <div class="brand">
+                <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <polygon points="20,3 3,28 20,37" fill="#f1ead6" />
+                    <polygon points="20,3 37,28 20,37" fill="#e0a020" />
+                </svg>
+                Tetra
+            </div>
+            <div class="topbar-meta">
+                <div>Vol. <strong>01</strong></div>
+                <div>Edición <strong>2025</strong></div>
+                <div>Tipo <strong>ERP</strong></div>
+            </div>
+            <nav class="topbar-nav">
+                <a href="/login" class="nav-pill">Entrar</a>
+                <a href="/register" class="cta" style="padding:0.55rem 1rem; font-size:0.72rem;">Pintar mi negocio
+                    →</a>
+            </nav>
+        </header>
+
+        <main class="hero">
+            <div class="hero-text">
+                <h1 class="hero-title">TETRA</h1>
+                <p class="hero-sub">
+                    Sistema de gestión de <strong>código abierto</strong> para PyMEs venezolanas.
+                    Inventario, ventas, almacenes y facturación fiscal — multi-moneda VES/USD,
+                    IGTF y retenciones manejados correctamente. Self-hosted. Tus datos, tu servidor, tu negocio.
+                </p>
+
+                <h2 class="declaration">
+                    La factura que <em>se diseña</em>.<br>
+                    No la que <span class="strike">se sufre</span>.
+                </h2>
+
+                <div class="hero-cta">
+                    <a href="/register" class="cta">Pintar mi negocio <span class="cta-arrow">→</span></a>
+                    <a href="/login" class="cta cta-ghost">Ver la obra</a>
+                </div>
+            </div>
+
+            <div class="hero-figure">
+                <div class="factura-stage">
+                    <div class="factura-shadow" aria-hidden="true"></div>
+                    <div class="factura" role="img"
+                        aria-label="Factura de muestra emitida por Comercializadora El Progreso, C.A.">
+                        <div class="factura-head">
+                            <div>
+                                <div class="factura-doc-type">Factura</div>
+                                <div class="factura-doc-sub">Documento fiscal — SENIAT</div>
+                            </div>
+                            <div class="factura-meta">
+                                <div class="factura-meta-row"><span>N°</span><strong>00000001</strong></div>
+                                <div class="factura-meta-row"><span>Fecha</span><strong>15/03/2025</strong></div>
+                                <div class="factura-meta-row"><span>Serie</span><strong>A</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="factura-blocks">
+                            <div>
+                                <div class="factura-label">Emisor</div>
+                                <div class="factura-value">Comercializadora El Progreso, C.A.</div>
+                                <div class="factura-value mono">RIF: J-12345678-9</div>
+                                <div class="factura-value dim">Av. Principal, Edif. Centro, Local 4</div>
+                                <div class="factura-value dim">Caracas, Venezuela</div>
+                            </div>
+                            <div>
+                                <div class="factura-label">Cliente</div>
+                                <div class="factura-value">María González</div>
+                                <div class="factura-value mono">CI: V-12345678</div>
+                                <div class="factura-value dim">Calle 42, Residencias del Este</div>
+                                <div class="factura-value dim">Caracas, Venezuela</div>
+                            </div>
+                        </div>
+
+                        <table class="factura-items">
+                            <thead>
+                                <tr>
+                                    <th>SKU</th>
+                                    <th>Descripción</th>
+                                    <th>Cant.</th>
+                                    <th>P. Unit.</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="sku">A-001</td>
+                                    <td>Arroz Mary 1kg</td>
+                                    <td>10</td>
+                                    <td>2,50</td>
+                                    <td>25,00</td>
+                                </tr>
+                                <tr>
+                                    <td class="sku">H-002</td>
+                                    <td>Harina PAN 1kg</td>
+                                    <td>5</td>
+                                    <td>3,20</td>
+                                    <td>16,00</td>
+                                </tr>
+                                <tr>
+                                    <td class="sku">O-003</td>
+                                    <td>Aceite Mazeitex 1L</td>
+                                    <td>3</td>
+                                    <td>4,50</td>
+                                    <td>13,50</td>
+                                </tr>
+                                <tr>
+                                    <td class="sku">Z-004</td>
+                                    <td>Azúcar Blanca 1kg</td>
+                                    <td>8</td>
+                                    <td>1,80</td>
+                                    <td>14,40</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="factura-totals">
+                            <div class="totals-row"><span>Subtotal</span><span>68,90 USD</span></div>
+                            <div class="totals-row"><span>IVA 16%</span><span>11,02 USD</span></div>
+                            <div class="totals-row"><span>IGTF 3%</span><span>2,07 USD</span></div>
+                            <div class="totals-row total"><span>Total</span><span>79,92 USD</span></div>
+                            <div class="totals-row bcv"><span>Tasa BCV</span><span>36,00 Bs/USD</span></div>
+                            <div class="totals-row bcv"><span>Total Bs</span><span>2.877,12 Bs</span></div>
+                        </div>
+
+                        <div class="factura-foot">
+                            <span>Pago: Zelle / Transferencia / Efectivo USD</span>
+                            <span>Retención: IVA 75%</span>
+                        </div>
+
+                        <div class="factura-stamp" aria-hidden="true">FISCAL</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section class="billing" aria-label="Características del producto">
+            <div class="billing-item amber"><span class="billing-dot"></span>Productos</div>
+            <div class="billing-item amber"><span class="billing-dot"></span>Ventas</div>
+            <div class="billing-item amber"><span class="billing-dot"></span>Almacenes</div>
+            <div class="billing-item amber"><span class="billing-dot"></span>Facturación fiscal</div>
+            <div class="billing-item amber"><span class="billing-dot"></span>Clientes</div>
+            <div class="billing-item amber"><span class="billing-dot"></span>Reportes</div>
+            <div class="billing-item"><span class="billing-dot"></span>Multi-moneda VES/USD</div>
+            <div class="billing-item"><span class="billing-dot"></span>IGTF</div>
+            <div class="billing-item stamp"><span class="billing-dot"></span>SENIAT</div>
+            <div class="billing-item"><span class="billing-dot"></span>Self-hosted</div>
+            <div class="billing-item"><span class="billing-dot"></span>Código abierto</div>
+        </section>
+
+        <footer class="foot">
+            <span><strong>Tetra</strong><span class="foot-sep">·</span>Pintado para PyMEs venezolanas</span>
+            <span>v0.1<span class="foot-sep">·</span>Hecho en Venezuela</span>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            var ghost = document.getElementById('legacyGhost');
+            if (!ghost) return;
+            var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduced) return;
+            var threshold = window.innerHeight * 0.35;
+            var ticking = false;
+            function update() {
+                if (window.scrollY > threshold) {
+                    ghost.classList.add('is-faded');
+                } else {
+                    ghost.classList.remove('is-faded');
+                }
+                ticking = false;
+            }
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(update);
+                    ticking = true;
+                }
+            }, { passive: true });
+            update();
+        })();
+    </script>
+</body>
+
+</html>

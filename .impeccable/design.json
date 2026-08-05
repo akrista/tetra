@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-05T00:00:00Z",
+  "title": "Design System: Tetra",
+  "extensions": {
+    "colorMeta": {
+      "ink":           { "role": "neutral",   "displayName": "Deep Ink",          "canonical": "#0e0e10",                 "tonalRamp": ["oklch(8% 0.005 270)", "oklch(10% 0.005 270)", "oklch(12% 0.005 270)", "oklch(15% 0.005 270)", "oklch(18% 0.005 270)", "oklch(22% 0.005 270)", "oklch(28% 0.005 270)", "oklch(35% 0.005 270)"] },
+      "ink-soft":      { "role": "neutral",   "displayName": "Ink Soft",          "canonical": "#1a1a1e",                 "tonalRamp": ["oklch(8% 0.005 270)", "oklch(10% 0.005 270)", "oklch(12% 0.005 270)", "oklch(15% 0.005 270)", "oklch(18% 0.005 270)", "oklch(22% 0.005 270)", "oklch(28% 0.005 270)", "oklch(35% 0.005 270)"] },
+      "ink-deep":      { "role": "neutral",   "displayName": "Ink Deep",          "canonical": "#060607",                 "tonalRamp": ["oklch(4% 0.005 270)", "oklch(6% 0.005 270)", "oklch(8% 0.005 270)", "oklch(10% 0.005 270)", "oklch(12% 0.005 270)", "oklch(15% 0.005 270)", "oklch(18% 0.005 270)", "oklch(22% 0.005 270)"] },
+      "paper":         { "role": "neutral",   "displayName": "Warm Cream Paper",  "canonical": "#f1ead6",                 "tonalRamp": ["oklch(70% 0.04 80)", "oklch(78% 0.04 80)", "oklch(84% 0.04 80)", "oklch(89% 0.035 80)", "oklch(92% 0.03 80)", "oklch(94% 0.025 80)", "oklch(96% 0.02 80)", "oklch(98% 0.015 80)"] },
+      "paper-soft":    { "role": "neutral",   "displayName": "Paper Soft",        "canonical": "rgba(241, 234, 214, 0.78)", "tonalRamp": ["oklch(70% 0.04 80 / 0.20)", "oklch(78% 0.04 80 / 0.30)", "oklch(84% 0.04 80 / 0.40)", "oklch(89% 0.035 80 / 0.50)", "oklch(92% 0.03 80 / 0.60)", "oklch(94% 0.025 80 / 0.70)", "oklch(96% 0.02 80 / 0.85)", "oklch(98% 0.015 80 / 1.00)"] },
+      "paper-faint":   { "role": "neutral",   "displayName": "Paper Faint",       "canonical": "rgba(241, 234, 214, 0.42)", "tonalRamp": ["oklch(70% 0.04 80 / 0.10)", "oklch(78% 0.04 80 / 0.20)", "oklch(84% 0.04 80 / 0.30)", "oklch(89% 0.035 80 / 0.40)", "oklch(92% 0.03 80 / 0.50)", "oklch(94% 0.025 80 / 0.60)", "oklch(96% 0.02 80 / 0.70)", "oklch(98% 0.015 80 / 0.85)"] },
+      "paper-line":    { "role": "neutral",   "displayName": "Paper Line",        "canonical": "rgba(241, 234, 214, 0.18)", "tonalRamp": ["oklch(70% 0.04 80 / 0.05)", "oklch(78% 0.04 80 / 0.10)", "oklch(84% 0.04 80 / 0.15)", "oklch(89% 0.035 80 / 0.20)", "oklch(92% 0.03 80 / 0.30)", "oklch(94% 0.025 80 / 0.45)", "oklch(96% 0.02 80 / 0.60)", "oklch(98% 0.015 80 / 0.80)"] },
+      "paper-line-soft": { "role": "neutral", "displayName": "Paper Line Soft",   "canonical": "rgba(241, 234, 214, 0.10)", "tonalRamp": ["oklch(70% 0.04 80 / 0.03)", "oklch(78% 0.04 80 / 0.06)", "oklch(84% 0.04 80 / 0.10)", "oklch(89% 0.035 80 / 0.15)", "oklch(92% 0.03 80 / 0.22)", "oklch(94% 0.025 80 / 0.35)", "oklch(96% 0.02 80 / 0.50)", "oklch(98% 0.015 80 / 0.70)"] },
+      "amber":         { "role": "primary",   "displayName": "Sour Amber",        "canonical": "#e0a020",                 "tonalRamp": ["oklch(35% 0.10 70)", "oklch(45% 0.12 70)", "oklch(55% 0.14 70)", "oklch(62% 0.15 70)", "oklch(70% 0.15 70)", "oklch(76% 0.13 70)", "oklch(82% 0.10 70)", "oklch(88% 0.07 70)"] },
+      "amber-deep":    { "role": "primary",   "displayName": "Amber Deep",        "canonical": "#b87a10",                 "tonalRamp": ["oklch(28% 0.10 65)", "oklch(35% 0.12 65)", "oklch(42% 0.13 65)", "oklch(50% 0.14 65)", "oklch(58% 0.15 65)", "oklch(66% 0.15 65)", "oklch(74% 0.13 65)", "oklch(82% 0.10 65)"] },
+      "amber-glow":    { "role": "primary",   "displayName": "Amber Glow",        "canonical": "rgba(224, 160, 32, 0.38)", "tonalRamp": ["oklch(35% 0.10 70 / 0.10)", "oklch(45% 0.12 70 / 0.18)", "oklch(55% 0.14 70 / 0.26)", "oklch(62% 0.15 70 / 0.34)", "oklch(70% 0.15 70 / 0.42)", "oklch(76% 0.13 70 / 0.50)", "oklch(82% 0.10 70 / 0.65)", "oklch(88% 0.07 70 / 0.85)"] },
+      "amber-shadow":  { "role": "primary",   "displayName": "Amber Shadow",      "canonical": "rgba(224, 160, 32, 0.22)", "tonalRamp": ["oklch(35% 0.10 70 / 0.06)", "oklch(45% 0.12 70 / 0.12)", "oklch(55% 0.14 70 / 0.18)", "oklch(62% 0.15 70 / 0.24)", "oklch(70% 0.15 70 / 0.32)", "oklch(76% 0.13 70 / 0.42)", "oklch(82% 0.10 70 / 0.55)", "oklch(88% 0.07 70 / 0.75)"] },
+      "stamp":         { "role": "tertiary",  "displayName": "Fiscal Red",        "canonical": "#c2362f",                 "tonalRamp": ["oklch(30% 0.12 25)", "oklch(38% 0.14 25)", "oklch(46% 0.16 25)", "oklch(54% 0.17 25)", "oklch(60% 0.17 25)", "oklch(68% 0.15 25)", "oklch(76% 0.12 25)", "oklch(84% 0.08 25)"] },
+      "stamp-deep":    { "role": "tertiary",  "displayName": "Stamp Deep",        "canonical": "#8a1c1c",                 "tonalRamp": ["oklch(22% 0.10 25)", "oklch(28% 0.12 25)", "oklch(34% 0.14 25)", "oklch(42% 0.15 25)", "oklch(50% 0.16 25)", "oklch(58% 0.16 25)", "oklch(66% 0.14 25)", "oklch(74% 0.10 25)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Poster headlines, brand wordmark, factura doc-type, FISCAL stamp. Condensed, weight 800-900, line-height 0.82, letter-spacing -0.035em. Carries the declaration; no other job." },
+      "body":    { "displayName": "Body",    "purpose": "Explanations and long-form copy. Geometric sans at 1rem / 1.5. The only face allowed in paragraphs." },
+      "mono":    { "displayName": "Mono",    "purpose": "Fiscal data, metadata, nav pills, controls. Tabular numbers and slashed zero via font-feature-settings. Never decorative." }
+    },
+    "shadows": [
+      { "name": "factura-slab",       "value": "background: var(--amber); transform: translate(1.4rem, 1.4rem); filter: blur(0.5px);", "purpose": "Hard offset amber slab under the painted factura. Amber against ink." },
+      { "name": "cta-hover-slab",     "value": "box-shadow: 4px 4px 0 var(--ink); transform: translate(-2px, -2px);",                "purpose": "Primary CTA hover state. Paint swap (amber -> paper) plus an ink slab; surface lifts -2px / -2px." },
+      { "name": "ghost-cta-hover-slab", "value": "box-shadow: 4px 4px 0 var(--amber);",                                            "purpose": "Ghost CTA hover state. Paint swap (transparent -> paper) plus an amber slab." }
+    ],
+    "motion": [
+      { "name": "ghost-fade",   "value": "transition: opacity 0.5s ease; toggle .is-faded past innerHeight * 0.35", "purpose": "Legacy dot-matrix residue fades on scroll. rAF-throttled. Respects prefers-reduced-motion. The one authored moment." },
+      { "name": "cta-press",    "value": "transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease", "purpose": "Primary and ghost CTA hover state (color/border swap + -2px / -2px translate on primary)." },
+      { "name": "arrow-slide",  "value": "transition: transform 0.15s ease; hover translateX(4px)",                "purpose": "Primary CTA trailing arrow slides 4px right on hover." },
+      { "name": "nav-hover",    "value": "transition: color 0.15s ease, border-color 0.15s ease",                 "purpose": "Nav pill color and border swap to amber on hover." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "600px"  },
+      { "name": "md", "value": "960px"  }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CTA",
+      "kind": "button",
+      "refersTo": "cta-primary",
+      "description": "The painter's button. Sour amber ground with mono uppercase label; on hover swaps to paper and reveals an ink slab.",
+      "html": "<a href=\"/register\" class=\"ds-cta-primary\">Crear mi negocio <span class=\"ds-cta-arrow\">→</span></a>",
+      "css": ".ds-cta-primary { display: inline-flex; align-items: center; gap: 0.7rem; padding: 0.95rem 1.5rem; background: var(--amber); color: var(--ink); font-family: var(--mono); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border: 1.5px solid var(--amber); text-decoration: none; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease; white-space: nowrap; } .ds-cta-primary:hover { background: var(--paper); border-color: var(--paper); color: var(--ink); transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); } .ds-cta-primary:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; } .ds-cta-arrow { display: inline-block; transition: transform 0.15s ease; font-family: var(--mono); } .ds-cta-primary:hover .ds-cta-arrow { transform: translateX(4px); }"
+    },
+    {
+      "name": "Ghost CTA",
+      "kind": "button",
+      "refersTo": "cta-ghost",
+      "description": "Secondary action. Paper-soft text on the wall; on hover swaps to paper and reveals an amber slab.",
+      "html": "<a href=\"/login\" class=\"ds-cta-ghost\">Iniciar sesión</a>",
+      "css": ".ds-cta-ghost { display: inline-flex; align-items: center; gap: 0.7rem; padding: 0.95rem 1.5rem; background: transparent; color: var(--paper); font-family: var(--mono); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border: 1.5px solid var(--paper-line); text-decoration: none; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease; white-space: nowrap; } .ds-cta-ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); box-shadow: 4px 4px 0 var(--amber); } .ds-cta-ghost:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }"
+    },
+    {
+      "name": "Nav Pill",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Top-bar control. Mono uppercase at 0.72rem with a paper-line hairline border; hovers to amber.",
+      "html": "<a href=\"/login\" class=\"ds-nav-pill\">Entrar</a>",
+      "css": ".ds-nav-pill { display: inline-flex; align-items: center; padding: 0.5rem 1rem; border: 1px solid var(--paper-line); font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--paper-soft); text-decoration: none; transition: color 0.15s ease, border-color 0.15s ease; } .ds-nav-pill:hover { color: var(--amber); border-color: var(--amber); } .ds-nav-pill:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }"
+    },
+    {
+      "name": "Fiscal Stamp",
+      "kind": "custom",
+      "refersTo": "fiscal-stamp",
+      "description": "The signature element. Circular stamp-red stamp on the factura, rotated -14 degrees. The only rounded element in the system.",
+      "html": "<div class=\"ds-factura-stage\"><div class=\"ds-factura-shadow\"></div><div class=\"ds-factura\"><div class=\"ds-factura-stamp\">FISCAL</div></div></div>",
+      "css": ".ds-factura { position: relative; background: var(--paper); color: var(--ink); border: 1.5px solid var(--ink); padding: 1.5rem 1.6rem 1.6rem; font-family: var(--mono); } .ds-factura-stamp { position: absolute; bottom: 1.1rem; right: 1.1rem; width: 4.6rem; height: 4.6rem; border: 3px solid var(--stamp); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 800; font-size: 0.75rem; color: var(--stamp); letter-spacing: 0.12em; transform: rotate(-14deg); opacity: 0.92; line-height: 1; } .ds-factura-stamp::before { content: ''; position: absolute; inset: 4px; border: 1px solid var(--stamp); border-radius: 50%; }"
+    },
+    {
+      "name": "Painted Factura",
+      "kind": "custom",
+      "refersTo": "factura-card",
+      "description": "The signature component. A cream-paper invoice card on an amber slab, with mono fiscal data, hairline borders, and a FISCAL stamp.",
+      "html": "<div class=\"ds-factura-stage\"><div class=\"ds-factura-shadow\"></div><div class=\"ds-factura\"><div class=\"ds-factura-head\"><div><div class=\"ds-factura-doc-type\">Factura</div><div class=\"ds-factura-doc-sub\">Documento fiscal — SENIAT</div></div><div class=\"ds-factura-meta\"><div class=\"ds-factura-meta-row\"><span>N°</span><strong>00000001</strong></div><div class=\"ds-factura-meta-row\"><span>Fecha</span><strong>15/03/2025</strong></div><div class=\"ds-factura-meta-row\"><span>Serie</span><strong>A</strong></div></div></div><table class=\"ds-factura-items\"><thead><tr><th>SKU</th><th>Descripción</th><th>Cant.</th><th>P. Unit.</th><th>Total</th></tr></thead><tbody><tr><td class=\"ds-sku\">A-001</td><td>Arroz Mary 1kg</td><td>10</td><td>2,50</td><td>25,00</td></tr><tr><td class=\"ds-sku\">H-002</td><td>Harina PAN 1kg</td><td>5</td><td>3,20</td><td>16,00</td></tr><tr><td class=\"ds-sku\">O-003</td><td>Aceite Mazeitex 1L</td><td>3</td><td>4,50</td><td>13,50</td></tr><tr><td class=\"ds-sku\">Z-004</td><td>Azúcar Blanca 1kg</td><td>8</td><td>1,80</td><td>14,40</td></tr></tbody></table><div class=\"ds-factura-totals\"><div class=\"ds-totals-row\"><span>Subtotal</span><span>68,90 USD</span></div><div class=\"ds-totals-row\"><span>IVA 16%</span><span>11,02 USD</span></div><div class=\"ds-totals-row\"><span>IGTF 3%</span><span>2,07 USD</span></div><div class=\"ds-totals-row ds-total\"><span>Total</span><span>79,92 USD</span></div><div class=\"ds-totals-row ds-bcv\"><span>Tasa BCV</span><span>36,00 Bs/USD</span></div><div class=\"ds-totals-row ds-bcv\"><span>Total Bs</span><span>2.877,12 Bs</span></div></div><div class=\"ds-factura-foot\"><span>Pago: Zelle / Transferencia / Efectivo USD</span><span>Retención: IVA 75%</span></div><div class=\"ds-factura-stamp\">FISCAL</div></div></div>",
+      "css": ".ds-factura-stage { position: relative; padding: 2.5rem 0 2rem; } .ds-factura-shadow { position: absolute; inset: 0; background: var(--amber); transform: translate(1.4rem, 1.4rem); z-index: 0; filter: blur(0.5px); } .ds-factura { position: relative; z-index: 1; background: var(--paper); color: var(--ink); border: 1.5px solid var(--ink); padding: 1.5rem 1.6rem 1.6rem; font-family: var(--mono); font-feature-settings: \"tnum\" 1, \"zero\" 1; } .ds-factura-head { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1.5px solid var(--ink); padding-bottom: 0.85rem; margin-bottom: 1rem; } .ds-factura-doc-type { font-family: var(--display); font-weight: 800; font-size: 1.7rem; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1; color: var(--ink); } .ds-factura-doc-sub { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.16em; color: rgba(14, 14, 16, 0.6); margin-top: 0.3rem; } .ds-factura-meta { text-align: right; font-size: 0.7rem; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.06em; } .ds-factura-meta-row { display: flex; gap: 0.5rem; justify-content: flex-end; } .ds-factura-meta-row span:first-child { color: rgba(14, 14, 16, 0.55); } .ds-factura-meta-row strong { font-weight: 600; } .ds-factura-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1rem; font-size: 0.76rem; line-height: 1.45; } .ds-factura-label { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.18em; color: rgba(14, 14, 16, 0.6); margin-bottom: 0.3rem; font-weight: 600; } .ds-factura-value { font-weight: 500; } .ds-factura-value.mono { font-size: 0.7rem; } .ds-factura-value.dim { color: rgba(14, 14, 16, 0.65); font-weight: 400; } .ds-factura-items { width: 100%; border-collapse: collapse; font-size: 0.72rem; margin-bottom: 0.9rem; } .ds-factura-items th, .ds-factura-items td { text-align: left; padding: 0.4rem; border-bottom: 1px solid rgba(14, 14, 16, 0.15); } .ds-factura-items th { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(14, 14, 16, 0.6); font-weight: 600; border-bottom: 1px solid var(--ink); } .ds-factura-items td:nth-child(n+3), .ds-factura-items th:nth-child(n+3) { text-align: right; } .ds-sku { color: rgba(14, 14, 16, 0.55); font-size: 0.68rem; } .ds-factura-totals { font-size: 0.76rem; margin-left: auto; width: 65%; } .ds-totals-row { display: flex; justify-content: space-between; padding: 0.28rem 0; border-bottom: 1px solid rgba(14, 14, 16, 0.15); } .ds-totals-row span:first-child { color: rgba(14, 14, 16, 0.6); } .ds-total { font-size: 1.02rem; font-weight: 700; border-bottom: 2px solid var(--ink); border-top: 1px solid var(--ink); padding: 0.5rem 0; margin-top: 0.3rem; } .ds-total span:first-child { color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; } .ds-total span:last-child { color: var(--amber-deep); } .ds-bcv { color: rgba(14, 14, 16, 0.55); font-size: 0.68rem; border-bottom: none; padding: 0.18rem 0; } .ds-factura-foot { margin-top: 1rem; padding-top: 0.7rem; border-top: 1px solid rgba(14, 14, 16, 0.15); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(14, 14, 16, 0.6); display: flex; justify-content: space-between; gap: 1rem; } .ds-factura-stamp { position: absolute; bottom: 1.1rem; right: 1.1rem; width: 4.6rem; height: 4.6rem; border: 3px solid var(--stamp); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 800; font-size: 0.75rem; color: var(--stamp); letter-spacing: 0.12em; transform: rotate(-14deg); opacity: 0.92; line-height: 1; z-index: 2; } .ds-factura-stamp::before { content: ''; position: absolute; inset: 4px; border: 1px solid var(--stamp); border-radius: 50%; }"
+    },
+    {
+      "name": "Declaration",
+      "kind": "custom",
+      "refersTo": "declaration",
+      "description": "The hero declaration. Big Shoulders Display with a 2px amber top border; em is amber weight 900; strike is paper-faint with a 3px stamp-red line-through.",
+      "html": "<h2 class=\"ds-declaration\">La factura que <em>se diseña</em>.<br>No la que <span class=\"ds-strike\">se sufre</span>.</h2>",
+      "css": ".ds-declaration { font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 2.6vw, 2.4rem); line-height: 1.05; letter-spacing: -0.005em; text-transform: uppercase; color: var(--paper); margin: 2.5rem 0 0; padding-top: 1.5rem; border-top: 2px solid var(--amber); max-width: 28rem; } .ds-declaration em { font-style: normal; color: var(--amber); font-weight: 900; } .ds-strike { text-decoration: line-through; text-decoration-color: var(--stamp); text-decoration-thickness: 3px; color: var(--paper-faint); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Mural de la Factura",
+    "overview": "Tetra's visual world is a public mural on a Venezuelan wall. The night wall is deep ink; the factura is painted on top in warm cream with a hard sour-amber shadow behind it; the legacy ERP's dot-matrix residue fades into the background as you scroll. The page declares itself — \"La factura que se diseña. No la que se sufre.\" — and invites the SMB owner to \"pintar\" their own business. The brand voice is a muralist, not a SaaS template. The committed direction, lifted from the HTML comment in templates/welcome.html, is the binding thesis: Tetra is the public mural on the Venezuelan wall — the factura painted boldly where the legacy ERP's dot-matrix ghost used to be. OWN-WORLD: Night wall (deep ink) with warm cream paint, sour amber signal (30–60% of surface), fiscal red stamp. Condensed display (Big Shoulders Display) carries the declaration, mono (IBM Plex Mono) carries fiscal data, geometric sans (Sora) carries body.",
+    "keyCharacteristics": [
+      "Sharp by default. The only rounded element in the system is the FISCAL stamp (a circle). Everything else is 90° corners, ink hairlines, no card radii.",
+      "Three typefaces, three jobs. Condensed display (Big Shoulders Display) declares; mono (IBM Plex Mono) carries fiscal data and metadata; geometric sans (Sora) carries body. No overlap.",
+      "Amber is the signal, not the chrome. Sour amber (#e0a020) carries the CTA, the declaration emphasis, the brand-mark half, and the factura's hard offset shadow. It is the painter's color, not a brand tint.",
+      "Fiscal red is a stamp, not a palette. A single circular FISCAL stamp, rotated -14°, sitting on top of the factura. Never used elsewhere.",
+      "One authored moment. The legacy dot-matrix ghost fades as the user scrolls past the first viewport. Nothing else animates.",
+      "Spanish-first, es-VE. All copy is Spanish. No translation artefacts."
+    ],
+    "rules": [
+      { "name": "The Amber Surface Rule",        "body": "Sour amber is the only color allowed to cover significant wall area (30–60% of any surface). Cream paint and ink text are the defaults; amber is the highlight that proves the highlight exists. If amber appears on every section, it is no longer a signal.",                                   "section": "colors" },
+      { "name": "The Stamp Singularity Rule",    "body": "Fiscal red (#c2362f) appears only inside the FISCAL stamp. It is not a palette accent; it is the stamp. A red line, red button, red badge, or red border anywhere else breaks the world.",                                                                                    "section": "colors" },
+      { "name": "The Three-Job Rule",            "body": "Each typeface has one job. Big Shoulders Display declares (poster headlines, brand mark, FISCAL stamp, factura doc-type). IBM Plex Mono counts (every monetary value, every SKU, every date, every navigation pill). Sora explains (hero sub, and any longer-form body copy in future surfaces). Reassigning a face to a job it does not own breaks the system.", "section": "typography" },
+      { "name": "The Mono Has a Reason Rule",    "body": "Mono is fiscal data, not costume. If a string has no number, date, or label attached to a number, it is not mono. The nav pill is mono because it is a control. The footer is mono because it carries version metadata. A long paragraph in mono is a fail.",                                              "section": "typography" },
+      { "name": "The Hard-Offset Rule",          "body": "Depth is a colored block under a surface, never a soft halo. A zero-blur offset shadow (4px 4px 0) on hover is the only sanctioned depth idiom. Soft drop shadows, ambient glows, and 1px borders under wide shadows are out of the world.",                                                       "section": "elevation" },
+      { "name": "The Sharp-By-Default Rule",     "body": "Every container, button, and field is 90° corners. The FISCAL stamp is the only rounded element. Card radii (12–16px) and pill radii are not in this world.",                                                                                                                          "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep the wall flat: page background is --ink. No gradients on the body.",
+      "Do use Big Shoulders Display only for declarations, wordmarks, the factura doc-type, and the FISCAL stamp. Other uses break the three-job rule.",
+      "Do use IBM Plex Mono with font-feature-settings: \"tnum\" 1, \"zero\" 1 for every monetary value, date, SKU, and label. Tabular numbers keep the columns aligned.",
+      "Do keep depth as a hard offset shadow (4px / 4px 0 or 1.4rem / 1.4rem). No soft drop shadows.",
+      "Do anchor every Spanish-facing surface in es-VE and write copy first, translate never.",
+      "Do let the legacy ghost be the only motion. New animations need a world reason; default to no.",
+      "Do use the full token library (--ink-soft, --ink-deep, --amber-glow, --amber-shadow, --stamp-deep are reserved for future surfaces — define them once, inherit them everywhere)."
+    ],
+    "donts": [
+      "Don't round anything except the FISCAL stamp. Buttons, nav pills, cards, the factura: 90° corners.",
+      "Don't use fiscal red outside the FISCAL stamp. No red buttons, red borders, red lines.",
+      "Don't put a kicker, eyebrow, or section number above a heading. The display face carries the weight on its own.",
+      "Don't introduce glass, blur, or backdrop-filter as decoration. The wall is matte.",
+      "Don't use Tailwind utility chains in component CSS — write the world in semantic class names (.cta, .factura, .declaration). Tailwind v4 is loaded for the @source path only.",
+      "Don't ship a 1px border under a soft shadow. That is the ghost card and it is not in this world.",
+      "Don't switch the wall to a light theme or alternate palette. The wall is the night wall; alternate themes break the mural.",
+      "Don't close the open product decisions from PRODUCT.md (final OSS license, role model, sucursales, inventory costing, direct SENIAT integration, offline depth, legacy importers, cloud pricing, tenant identification) by inventing UI for them."
+    ]
+  }
+}
