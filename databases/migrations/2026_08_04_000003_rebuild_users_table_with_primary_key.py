@@ -35,3 +35,18 @@ class RebuildUsersTableWithPrimaryKey(Migration):
 
     def down(self):
         self.schema.drop_table("users")
+        with self.schema.create("users") as table:
+            table.increments("id")
+            table.string("name")
+            table.string("email").unique()
+            table.string("password")
+            table.string("second_password").nullable()
+            table.string("remember_token").nullable()
+            table.string("phone").nullable()
+            table.timestamp("verified_at").nullable()
+            table.unsigned_integer("tenant_id")
+            table.foreign("tenant_id").references("id").on("tenants").on_delete(
+                "cascade"
+            )
+            table.boolean("is_owner").default(False)
+            table.timestamps()

@@ -70,7 +70,6 @@ Confirmed for v1:
 Explicitly open / not yet decided:
 - Final open source license (AGPL-3.0 working default; may change).
 - Subdomain vs path vs header for tenant identification in the future managed cloud.
-- Role / permission model beyond owner and basic staff roles.
 - Whether v1 supports a single business with multiple sucursales (branches) under one tenant.
 - Inventory costing method (FIFO / LIFO / weighted average) and re-valuation handling.
 - Direct SENIAT / fiscal-printer integration vs printable-document-only output.

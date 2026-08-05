@@ -88,7 +88,7 @@ The committed direction, lifted from the HTML comment in `templates/welcome.html
 - **One authored moment.** The legacy dot-matrix ghost fades as the user scrolls past the first viewport. Nothing else animates.
 - **Spanish-first, es-VE.** All copy is Spanish. No translation artefacts.
 
-Open product decisions that future design work must not silently close (from `PRODUCT.md` § Capabilities and Constraints, lines 70–79): final OSS license (AGPL-3.0 working default); role/permission model beyond owner and basic staff; single-tenant vs multi-sucursal in v1; inventory costing method (FIFO / LIFO / weighted average); direct SENIAT / fiscal-printer integration vs printable-document-only; offline / degraded-network mode depth; legacy ERP and Excel importer priority and depth; managed-cloud plan tiers and pricing; subdomain vs path vs header for tenant identification in the future managed cloud. New surfaces ship as the world, not as answers to these.
+Open product decisions that future design work must not silently close (from `PRODUCT.md` § Capabilities and Constraints, lines 70–79): final OSS license (AGPL-3.0 working default); single-tenant vs multi-sucursal in v1; inventory costing method (FIFO / LIFO / weighted average); direct SENIAT / fiscal-printer integration vs printable-document-only; offline / degraded-network mode depth; legacy ERP and Excel importer priority and depth; managed-cloud plan tiers and pricing; subdomain vs path vs header for tenant identification in the future managed cloud. New surfaces ship as the world, not as answers to these.
 
 ## Colors
 
@@ -235,7 +235,7 @@ Borders are ink hairlines (`1.5px` solid `--ink`) on the paper factura, and pape
 - **Don't** use Tailwind utility chains in component CSS — write the world in semantic class names (`.cta`, `.factura`, `.declaration`). Tailwind v4 is loaded for the `@source` path only.
 - **Don't** ship a 1px border under a soft shadow. That is the ghost card and it is not in this world.
 - **Don't** switch the wall to a light theme or alternate palette. The wall is the night wall; alternate themes break the mural.
-- **Don't** close the open product decisions from `PRODUCT.md` (final OSS license, role model, sucursales, inventory costing, direct SENIAT integration, offline depth, legacy importers, cloud pricing, tenant identification) by inventing UI for them. They are listed under the Overview and future work must not silently close them.
+- **Don't** close the open product decisions from `PRODUCT.md` (final OSS license, sucursales, inventory costing, direct SENIAT integration, offline depth, legacy importers, cloud pricing, tenant identification) by inventing UI for them. They are listed under the Overview and future work must not silently close them.
 
 ## Implementation Status
 

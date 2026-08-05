@@ -1,0 +1,53 @@
+{% extends 'app/layout.html' %}
+
+{% block title %}Panel — Tetra{% endblock %}
+
+{% block app_content %}
+{% if not user.is_verified() %}
+<div class="alert-banner" role="alert">
+    Verifica tu correo para asegurar tu cuenta.
+    <form method="POST" action="/verify-email/resend" style="display:inline;">
+        {{ csrf_field }}
+        <button type="submit" class="table-action" style="display:inline; margin-left:.5rem;">Reenviar verificación</button>
+    </form>
+</div>
+{% endif %}
+
+<div class="page-head">
+    <div>
+        <h1 class="page-title"><span class="amber">{{ greeting }}</span></h1>
+        <p class="page-sub">
+            <span>{{ tenant.name }}</span>
+            <span class="role-badge">{{ role_label }}</span>
+        </p>
+    </div>
+</div>
+
+<div class="hero-cta" style="margin-top:1.25rem;">
+    {% if user.is_owner or user.can('users.manage') %}
+    <a href="/users/create" class="cta">Nuevo usuario <span class="cta-arrow">→</span></a>
+    <a href="/users" class="cta cta-ghost">Ver usuarios</a>
+    {% endif %}
+    {% if user.is_owner or user.can('roles.manage') %}
+    <a href="/roles/create" class="cta cta-ghost">Nuevo rol</a>
+    {% endif %}
+    {% if not (user.is_owner or user.can('users.manage') or user.can('roles.manage')) %}
+    <a href="/profile" class="cta">Ir a mi perfil <span class="cta-arrow">→</span></a>
+    {% endif %}
+</div>
+
+<div class="summary-grid">
+    {% if user.is_owner or user.can('users.manage') %}
+    <a class="summary-card" href="/users" style="text-decoration:none; display:block;">
+        <p class="summary-value">{{ users_count }}</p>
+        <p class="summary-label">Usuarios en el equipo</p>
+    </a>
+    {% endif %}
+    {% if user.is_owner or user.can('roles.manage') %}
+    <a class="summary-card" href="/roles" style="text-decoration:none; display:block;">
+        <p class="summary-value">{{ roles_count }}</p>
+        <p class="summary-label">Roles definidos</p>
+    </a>
+    {% endif %}
+</div>
+{% endblock %}

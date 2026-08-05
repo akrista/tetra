@@ -1,10 +1,11 @@
 [project]
-name = "keystone"
+name = "tetra"
 version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
     "masonite-framework>=5.0,<6",
     "masonite-framework-orm>=3.0,<4",
+    "tigerbeetle>=0.17.9",
 ]
 
 [dependency-groups]
@@ -16,4 +17,3 @@ dev = [
 
 [tool.ruff.lint]
 ignore = ["N999"]
-

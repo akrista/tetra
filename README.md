@@ -1,8 +1,18 @@
 # tetra
 
-Multi-tenant SaaS ERP. **Milestone 1: authentication foundation.**
+Multi-tenant SaaS ERP. **Milestone 1: authentication foundation. Milestone 2: dashboard, users, roles & permissions, profile.**
 
 ## What ships in this milestone
+
+### Milestone 2
+
+- Authenticated app shell (`/dashboard`) with time-of-day greeting, tenant context, and permission-gated navigation.
+- Tenant-scoped user management: list, create, edit, delete (`/users*`), with self-delete and last-owner guards.
+- Roles & permissions (RBAC): roles per tenant, global permission catalog (`users.manage`, `roles.manage`), assignable roles on user create/edit, owner bypass, permission-scoped route middleware.
+- User profile: edit name / phone, change password (current password required), change email (re-verification required).
+- Security: tenant scoping on every lookup, non-owners cannot modify owner accounts, role assignment / permission grants restricted to permissions the actor holds, CSRF on all POST forms.
+
+### Milestone 1
 
 - Tenants + users with email / password authentication.
 - Tenant-scoped sessions.
@@ -12,7 +22,7 @@ Multi-tenant SaaS ERP. **Milestone 1: authentication foundation.**
 - Real email verification via signed link.
 - Tenant boundary enforced on every authenticated request.
 
-No ERP modules, no subdomain routing, no RBAC beyond "owner", no social login, no billing.
+No ERP modules, no subdomain routing, no social login, no billing.
 
 ## Stack
 
@@ -64,7 +74,7 @@ After `craft seed:run`:
 pytest -q
 ```
 
-The test suite covers real auth flows: signup creates a tenant + owner, login uses a real bcrypt hash, logout clears the session, password reset consumes a single token, email verification flips `verified_at`, and a tampered tenant id is rejected.
+The test suite covers real auth flows: signup creates a tenant + owner, login uses a real bcrypt hash, logout clears the session, password reset consumes a single token, email verification flips `verified_at`, and a tampered tenant id is rejected. Milestone 2 adds coverage for the dashboard, profile (name/phone/password/email changes), tenant-scoped user CRUD, RBAC matrix (owner bypass, permission enforcement, escalation guards), cross-tenant IDOR, and role-preselection rendering.
 
 ## Configuration
 
@@ -81,17 +91,18 @@ app/
   controllers/        HTTP request handlers
   mailables/          Transactional email classes
   middlewares/        Request lifecycle hooks (incl. TenantContextMiddleware)
-  models/             ORM models (Tenant, User)
+  models/             ORM models (Tenant, User, Role, Permission)
   providers/          App boot hooks
   utils/              Pure helpers (slugify, auth URL builders)
 config/               All Masonite config modules
 databases/
   migrations/         Schema changes (timestamped)
-  seeds/              Dev / test data
+  seeds/              Dev / test data (incl. permission catalog)
 routes/
   web.py              HTTP routes
 templates/
   auth/               Login, register, password reset, verify email views
+  app/                Authenticated app shell (dashboard, users, roles, profile)
   emails/             Transactional email templates
   welcome.html        Tenant-aware landing page
 tests/                pytest suite
@@ -99,4 +110,4 @@ tests/                pytest suite
 
 ## Out of scope (intentional)
 
-Subdomain or path-based tenant routing, tenant switching UI, invitations, role / permission model beyond "owner", profile editing, password change from inside the app, 2FA, social login, billing, ERP modules (invoicing, inventory, customers, finance, reporting), API tokens, audit log, production SMTP hardening, i18n, SPA / HTMX. These are explicit non-goals for milestone 1.
+Subdomain or path-based tenant routing, tenant switching UI, invitations, 2FA, social login, billing, ERP modules (invoicing, inventory, customers, finance, reporting), API tokens, audit log, production SMTP hardening, i18n, SPA / HTMX. These are explicit non-goals for milestones 1 and 2.

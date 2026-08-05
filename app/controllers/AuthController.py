@@ -40,9 +40,9 @@ def _allocate_slug(name: str) -> str:
 
 
 class AuthController(Controller):
-    def show_login(self, request: Request, view: View):
+    def show_login(self, request: Request, view: View, response: Response):
         if request.user():
-            return request.redirect("/")
+            return response.redirect("/dashboard")
         return view.render("auth.login")
 
     def login(self, request: Request, auth: Auth, response: Response):
@@ -62,11 +62,11 @@ class AuthController(Controller):
 
         user = request.user()
         request.session.set("tenant_id", user.tenant_id)
-        return response.redirect("/")
+        return response.redirect("/dashboard")
 
-    def show_register(self, request: Request, view: View):
+    def show_register(self, request: Request, view: View, response: Response):
         if request.user():
-            return request.redirect("/")
+            return response.redirect("/dashboard")
         return view.render("auth.register")
 
     def register(self, request: Request, auth: Auth, response: Response):
@@ -122,7 +122,7 @@ class AuthController(Controller):
             ).send()
             return response.redirect("/verify-email")
 
-        return response.redirect("/")
+        return response.redirect("/dashboard")
 
     def logout(self, request: Request, auth: Auth, response: Response):
         auth.logout()
@@ -200,11 +200,7 @@ class AuthController(Controller):
         if not errors and len(request.input("password") or "") < 8:
             errors = {"password": ["Password must be at least 8 characters."]}
         if errors:
-            return (
-                response.redirect(f"/password/reset/{token}")
-                .with_errors(errors)
-                .with_input(request.all())
-            )
+            return response.redirect(f"/password/reset/{token}").with_errors(errors)
 
         if not auth.reset_password(request.input("password"), token):
             return response.redirect(f"/password/reset/{token}").with_errors(
@@ -242,12 +238,14 @@ class AuthController(Controller):
             )
 
         if user.verified_at:
-            return response.redirect("/").with_success("Email already verified.")
+            return response.redirect("/dashboard").with_success(
+                "Email already verified."
+            )
 
         User.where("id", user.id).update(
             {"verified_at": datetime.now(UTC).isoformat(sep=" ")}
         )
-        return response.redirect("/").with_success("Email verified.")
+        return response.redirect("/dashboard").with_success("Email verified.")
 
     def resend_verify_email(self, request: Request, response: Response):
         user = request.user()

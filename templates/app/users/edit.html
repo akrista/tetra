@@ -1,0 +1,57 @@
+{% extends 'app/layout.html' %}
+
+{% block title %}Editar usuario — Tetra{% endblock %}
+
+{% block app_content %}
+<div class="page-head">
+    <div>
+        <h1 class="page-title"><span class="amber">Editar usuario</span></h1>
+        <p class="page-sub">{{ target.name }}</p>
+    </div>
+</div>
+
+<div class="panel">
+    <form method="POST" action="/users/{{ target.id }}">
+        {{ csrf_field }}
+
+        <div class="form-group">
+            <label for="name" class="form-label">Nombre completo</label>
+            <input type="text" id="name" name="name" class="form-input" value="{{ old('name', target.name) }}" required
+                {% if errors and errors.has('name') %}aria-invalid="true"{% endif %}>
+            {% if errors and errors.has('name') %}
+            <div class="error-message">{{ errors.get('name')[0] if errors.get('name') is not string else errors.get('name') }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" id="email" name="email" class="form-input" value="{{ old('email', target.email) }}" required
+                {% if errors and errors.has('email') %}aria-invalid="true"{% endif %}>
+            {% if errors and errors.has('email') %}
+            <div class="error-message">{{ errors.get('email')[0] if errors.get('email') is not string else errors.get('email') }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="phone" class="form-label">Teléfono</label>
+            <input type="text" id="phone" name="phone" class="form-input" value="{{ old('phone', target.phone or '') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="role_id" class="form-label">Rol</label>
+            <select id="role_id" name="role_id" class="form-input">
+                <option value="">Sin rol</option>
+                {% set current_role_id = target.roles.first().id if target.roles else '' %}
+                {% for role in roles %}
+                <option value="{{ role.id }}" {{ 'selected' if (old('role_id', '') or current_role_id|string) == role.id|string }}>{{ role.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <a href="/users" class="btn-inline btn-ghost">Cancelar</a>
+            <button type="submit" class="btn-inline">Guardar cambios</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

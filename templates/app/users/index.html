@@ -1,0 +1,67 @@
+{% extends 'app/layout.html' %}
+
+{% block title %}Usuarios — Tetra{% endblock %}
+
+{% block app_content %}
+<div class="page-head">
+    <div>
+        <h1 class="page-title"><span class="amber">Usuarios</span></h1>
+        <p class="page-sub">Gestiona quién entra a tu espacio de trabajo</p>
+    </div>
+    <div class="page-actions">
+        <a class="cta" href="/users/create">Nuevo usuario <span class="cta-arrow">→</span></a>
+    </div>
+</div>
+
+<div class="panel">
+    {% if users %}
+    <div class="data-scroll">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Rol</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    <td>{{ u.name }} {% if u.is_owner %}<span class="owner-badge">Dueño</span>{% endif %}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.phone or '—' }}</td>
+                    <td>
+                        {% if u.is_owner %}—{% else %}
+                        {% for role in u.roles %}<span class="role-badge">{{ role.name }}</span>{% else %}Sin rol{% endfor %}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="table-actions">
+                            <a class="table-action" href="/users/{{ u.id }}/edit">Editar</a>
+                            {% if u.id != user.id %}
+                            <details class="confirm-inline">
+                                <summary>Eliminar</summary>
+                                <p>¿Eliminar a {{ u.name }}? Esta acción no se puede deshacer.</p>
+                                <form method="POST" action="/users/{{ u.id }}/delete">
+                                    {{ csrf_field }}
+                                    <button type="submit" class="btn-inline btn-stamp">Eliminar</button>
+                                </form>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <em>Aún no hay usuarios</em><br>
+        Crea el primer usuario para sumar a tu equipo.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

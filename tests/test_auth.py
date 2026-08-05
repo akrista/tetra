@@ -7,24 +7,24 @@ from tests.TestCase import TestCase
 
 class TestAuth(TestCase):
     def test_login_page_renders(self):
-        self.get("/login").assertOk().assertContains("Sign In")
+        self.get("/login").assertOk().assertContains("Bienvenido")
 
     def test_register_page_renders(self):
-        self.get("/register").assertOk().assertContains("Create account")
+        self.get("/register").assertOk().assertContains("Crear negocio")
 
     def test_register_page_has_tenant_field(self):
         self.get("/register").assertOk().assertContains("tenant_name")
 
     def test_forgot_password_page_renders(self):
-        self.get("/password/forgot").assertOk().assertContains("Reset password")
+        self.get("/password/forgot").assertOk().assertContains("Restablecer contraseña")
 
     def test_reset_password_page_renders_with_token(self):
         self.get("/password/reset/some-token-abc").assertOk().assertContains(
-            "Set new password"
+            "Nueva contraseña"
         )
 
     def test_verify_email_page_renders(self):
-        self.get("/verify-email").assertOk().assertContains("Check your email")
+        self.get("/verify-email").assertOk().assertContains("Revisa tu correo")
 
     def test_register_creates_tenant_and_owner(self):
         self.post(
@@ -79,16 +79,13 @@ class TestAuth(TestCase):
         res = self.post("/logout", {})
         res.assertRedirect()
 
-    def test_welcome_shows_user_name_when_authenticated(self):
+    def test_welcome_redirects_authenticated_user_to_dashboard(self):
         user = self.make_user(name="Hello There", email="hello@example.com")
-        # Build the remember token manually so we can pass it as a cookie
-        # (the Masonite test framework doesn't auto-chain sessions across
-        # requests — we set the token cookie directly).
-
         user.set_remember_token()
         user.save()
         self.withCookies({"token": user.remember_token})
-        self.get("/").assertOk().assertContains("Hello There")
+        self.get("/").assertRedirect()
+        self.get("/dashboard").assertOk().assertContains("Hello There")
 
     def test_password_reset_request_creates_token(self):
         self.make_user(email="reset@example.com")

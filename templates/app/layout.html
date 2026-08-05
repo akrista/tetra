@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel — Tetra{% endblock %}
+
+{% block content %}
+<div class="wall">
+    <header class="topbar">
+        <div class="brand">
+            <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <polygon points="20,3 3,28 20,37" fill="#f1ead6" />
+                <polygon points="20,3 37,28 20,37" fill="#e0a020" />
+            </svg>
+            Tetra
+        </div>
+        <nav class="topbar-nav" aria-label="Principal">
+            <a href="/dashboard" class="app-nav-link {{ 'is-active' if active_page == 'dashboard' }}">Panel</a>
+            {% if user.is_owner or user.can('users.manage') %}
+            <a href="/users" class="app-nav-link {{ 'is-active' if active_page == 'users' }}">Usuarios</a>
+            {% endif %}
+            {% if user.is_owner or user.can('roles.manage') %}
+            <a href="/roles" class="app-nav-link {{ 'is-active' if active_page == 'roles' }}">Roles</a>
+            {% endif %}
+            <a href="/profile" class="app-nav-link {{ 'is-active' if active_page == 'profile' }}">Perfil</a>
+        </nav>
+        <div class="topbar-meta"><div>{{ user.tenant.name }}</div></div>
+        <nav class="topbar-nav">
+            <span class="nav-pill">{{ user.name }}</span>
+            <form method="POST" action="/logout" style="margin:0; display:inline;">
+                {{ csrf_field }}
+                <button type="submit" class="nav-pill" style="background:transparent; border:1px solid rgba(241,234,214,0.18);">Salir</button>
+            </form>
+        </nav>
+    </header>
+
+    <main class="app-content">
+        {% if success %}
+        <div class="alert-banner" role="status">{{ success }}</div>
+        {% endif %}
+        {% if errors and errors.has('delete') %}
+        <div class="alert-banner" role="alert">
+            {{ errors.get('delete')[0] if errors.get('delete') is not string else errors.get('delete') }}
+        </div>
+        {% endif %}
+        {% block app_content %}{% endblock %}
+    </main>
+
+    <footer class="foot">
+        <span><strong>Tetra</strong><span class="foot-sep">·</span>{{ user.tenant.name }}</span>
+        <span>v0.1<span class="foot-sep">·</span>Hecho en Venezuela</span>
+    </footer>
+</div>
+{% endblock %}
