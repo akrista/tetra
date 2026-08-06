@@ -16,10 +16,10 @@
 
         <div class="form-group">
             <label for="name" class="form-label">Nombre del rol</label>
-            <input type="text" id="name" name="name" class="form-input" value="{{ old('name', target.name) }}" required
-                {% if errors and errors.has('name') %}aria-invalid="true"{% endif %}>
+            <input type="text" id="name" name="name" class="form-input" value="{{ old('name', target.name) }}" required autocomplete="name"
+                {% if errors and errors.has('name') %}aria-invalid="true" aria-describedby="name-error"{% endif %}>
             {% if errors and errors.has('name') %}
-            <div class="error-message">{{ errors.get('name')[0] if errors.get('name') is not string else errors.get('name') }}</div>
+            <div class="error-message" id="name-error">{{ errors.get('name')[0] if errors.get('name') is not string else errors.get('name') }}</div>
             {% endif %}
         </div>
 

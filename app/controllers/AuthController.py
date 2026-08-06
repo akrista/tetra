@@ -16,10 +16,14 @@ from app.mailables.VerifyEmailMailable import VerifyEmailMailable
 from app.models.Tenant import Tenant
 from app.models.User import User
 from app.utils.auth_urls import password_reset_url, verify_email_url
+from app.utils.rbac import attach_role, ensure_roles
 from app.utils.slug import slugify
 
 
 def _auto_verify() -> bool:
+    override = env("AUTH_AUTO_VERIFY", None)
+    if override is not None:
+        return str(override).lower() in ("1", "true", "yes", "on")
     return env("MAIL_DRIVER", "terminal") == "terminal"
 
 
@@ -61,6 +65,8 @@ class AuthController(Controller):
             )
 
         user = request.user()
+        if not user.is_verified():
+            return response.redirect("/verify-email")
         request.session.set("tenant_id", user.tenant_id)
         return response.redirect("/dashboard")
 
@@ -111,6 +117,9 @@ class AuthController(Controller):
 
         auth.attempt_by_id(user.id)
         request.session.set("tenant_id", user.tenant_id)
+
+        roles = ensure_roles(tenant.id)
+        attach_role(user.id, roles["admin"].id)
 
         if not auto:
             Mail.mailable(
@@ -199,10 +208,40 @@ class AuthController(Controller):
         if errors:
             return response.redirect(f"/password/reset/{token}").with_errors(errors)
 
+        row = (
+            request.app.make("builder")
+            .new()
+            .table("password_resets")
+            .where("token", token)
+            .first()
+        )
+        if not row:
+            return response.redirect(f"/password/reset/{token}").with_errors(
+                {"reset": "Invalid or expired link."}
+            )
+
+        expires_at = row.get("expires_at")
+        expired = True
+        if expires_at:
+            try:
+                exp_dt = datetime.fromisoformat(str(expires_at))
+            except ValueError:
+                exp_dt = None
+            if exp_dt and exp_dt >= datetime.now(UTC).replace(tzinfo=None):
+                expired = False
+        if expired or row.get("email") != request.input("email"):
+            return response.redirect(f"/password/reset/{token}").with_errors(
+                {"reset": "Invalid or expired link."}
+            )
+
         if not auth.reset_password(request.input("password"), token):
             return response.redirect(f"/password/reset/{token}").with_errors(
                 {"reset": "Invalid or expired link."}
             )
+
+        user = User.where("email", request.input("email")).first()
+        if user:
+            user.set_remember_token().save()
 
         return response.redirect("/login").with_success(
             "Password updated. Please sign in."
@@ -218,7 +257,7 @@ class AuthController(Controller):
 
         try:
             user_id = int(request.param("id"))
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             return response.redirect("/verify-email").with_errors(
                 {"verify": "Invalid verification link."}
             )

@@ -43,6 +43,7 @@
             name="name"
             class="form-input"
             placeholder="María González"
+            autocomplete="name"
             value="{{ old('name', '') }}"
             required
             {% if errors and errors.has('name') %}aria-invalid="true" aria-describedby="name-error"{% endif %}
@@ -62,6 +63,7 @@
             name="email"
             class="form-input"
             placeholder="tu@empresa.com"
+            autocomplete="email"
             value="{{ old('email', '') }}"
             required
             {% if errors and errors.has('email') %}aria-invalid="true" aria-describedby="email-error"{% endif %}
@@ -75,15 +77,19 @@
 
     <div class="form-group">
         <label for="password" class="form-label">Contraseña</label>
-        <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-input"
-            placeholder="Mínimo 8 caracteres"
-            required
-            {% if errors and errors.has('password') %}aria-invalid="true" aria-describedby="password-error"{% endif %}
-        >
+        <div class="password-wrap">
+            <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input"
+                placeholder="Mínimo 8 caracteres"
+                autocomplete="new-password"
+                required
+                {% if errors and errors.has('password') %}aria-invalid="true" aria-describedby="password-error"{% endif %}
+            >
+            <button type="button" class="password-toggle" data-target="password" aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button>
+        </div>
         {% if errors and errors.has('password') %}
         <div id="password-error" class="error-message">
             {{ errors.get('password')[0] if errors.get('password') is not string else errors.get('password') }}
@@ -93,14 +99,18 @@
 
     <div class="form-group">
         <label for="password_confirmation" class="form-label">Confirmar contraseña</label>
-        <input
-            type="password"
-            id="password_confirmation"
-            name="password_confirmation"
-            class="form-input"
-            placeholder="Repite tu contraseña"
-            required
-        >
+        <div class="password-wrap">
+            <input
+                type="password"
+                id="password_confirmation"
+                name="password_confirmation"
+                class="form-input"
+                placeholder="Repite tu contraseña"
+                autocomplete="new-password"
+                required
+            >
+            <button type="button" class="password-toggle" data-target="password_confirmation" aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button>
+        </div>
     </div>
 
     <button type="submit" class="btn" style="margin-top: .5rem;">Crear negocio</button>

@@ -4,7 +4,7 @@
 
 {% block app_content %}
 {% if not user.is_verified() %}
-<div class="alert-banner" role="alert">
+<div class="alert-banner" role="status">
     Verifica tu correo para asegurar tu cuenta.
     <form method="POST" action="/verify-email/resend" style="display:inline;">
         {{ csrf_field }}

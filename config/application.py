@@ -4,7 +4,7 @@ NAME = env("APP_NAME", "Masonite")
 
 KEY = env("APP_KEY")
 
-DEBUG = env("APP_DEBUG", True)
+DEBUG = env("APP_DEBUG", False)
 
 HASHING = {
     "default": "bcrypt",

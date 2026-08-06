@@ -19,10 +19,10 @@
         <table class="data-table">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Permisos</th>
-                    <th>Usuarios</th>
-                    <th></th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Permisos</th>
+                    <th scope="col">Usuarios</th>
+                    <th scope="col"><span class="visually-hidden">Acciones</span></th>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +46,7 @@
                                 </form>
                             </details>
                             {% else %}
-                            <span class="table-action table-action-disabled" title="Elimina primero sus usuarios">Eliminar</span>
+                            <span class="table-action table-action-disabled" aria-disabled="true" title="Elimina primero sus usuarios">Eliminar</span>
                             {% endif %}
                         </div>
                     </td>

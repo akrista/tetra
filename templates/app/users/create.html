@@ -16,39 +16,39 @@
 
         <div class="form-group">
             <label for="name" class="form-label">Nombre completo</label>
-            <input type="text" id="name" name="name" class="form-input" value="{{ old('name', '') }}" required
-                {% if errors and errors.has('name') %}aria-invalid="true"{% endif %}>
+            <input type="text" id="name" name="name" class="form-input" value="{{ old('name', '') }}" required autocomplete="name"
+                {% if errors and errors.has('name') %}aria-invalid="true" aria-describedby="name-error"{% endif %}>
             {% if errors and errors.has('name') %}
-            <div class="error-message">{{ errors.get('name')[0] if errors.get('name') is not string else errors.get('name') }}</div>
+            <div class="error-message" id="name-error">{{ errors.get('name')[0] if errors.get('name') is not string else errors.get('name') }}</div>
             {% endif %}
         </div>
 
         <div class="form-group">
             <label for="email" class="form-label">Correo electrónico</label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="persona@empresa.com" value="{{ old('email', '') }}" required
-                {% if errors and errors.has('email') %}aria-invalid="true"{% endif %}>
+            <input type="email" id="email" name="email" class="form-input" placeholder="persona@empresa.com" value="{{ old('email', '') }}" required autocomplete="email"
+                {% if errors and errors.has('email') %}aria-invalid="true" aria-describedby="email-error"{% endif %}>
             {% if errors and errors.has('email') %}
-            <div class="error-message">{{ errors.get('email')[0] if errors.get('email') is not string else errors.get('email') }}</div>
+            <div class="error-message" id="email-error">{{ errors.get('email')[0] if errors.get('email') is not string else errors.get('email') }}</div>
             {% endif %}
         </div>
 
         <div class="form-group">
             <label for="phone" class="form-label">Teléfono</label>
-            <input type="text" id="phone" name="phone" class="form-input" value="{{ old('phone', '') }}">
+            <input type="text" id="phone" name="phone" class="form-input" value="{{ old('phone', '') }}" autocomplete="tel">
         </div>
 
         <div class="form-group">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" id="password" name="password" class="form-input" placeholder="Mínimo 8 caracteres" required
-                {% if errors and errors.has('password') %}aria-invalid="true"{% endif %}>
+            <input type="password" id="password" name="password" class="form-input" placeholder="Mínimo 8 caracteres" required autocomplete="new-password"
+                {% if errors and errors.has('password') %}aria-invalid="true" aria-describedby="password-error"{% endif %}>
             {% if errors and errors.has('password') %}
-            <div class="error-message">{{ errors.get('password')[0] if errors.get('password') is not string else errors.get('password') }}</div>
+            <div class="error-message" id="password-error">{{ errors.get('password')[0] if errors.get('password') is not string else errors.get('password') }}</div>
             {% endif %}
         </div>
 
         <div class="form-group">
             <label for="password_confirmation" class="form-label">Confirmar contraseña</label>
-            <input type="password" id="password_confirmation" name="password_confirmation" class="form-input" required>
+            <input type="password" id="password_confirmation" name="password_confirmation" class="form-input" required autocomplete="new-password">
         </div>
 
         <div class="form-group">

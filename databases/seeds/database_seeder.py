@@ -1,15 +1,15 @@
-"""Base Database Seeder Module."""
+"""Base Database Seeder Module.
+
+Delegates to app.utils.rbac, which owns the single source of truth for the
+permission catalog and the TETRA_* env-driven tenant/owner bootstrap.
+"""
 
 from masoniteorm.seeds import Seeder
 
-from .permission_table_seeder import PermissionTableSeeder
-from .tenant_table_seeder import TenantTableSeeder
-from .user_table_seeder import UserTableSeeder
+from app.utils.rbac import seed_app_basics
 
 
 class DatabaseSeeder(Seeder):
     def run(self):
         """Run the database seeds."""
-        self.call(PermissionTableSeeder)
-        self.call(TenantTableSeeder)
-        self.call(UserTableSeeder)
+        seed_app_basics()

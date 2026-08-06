@@ -70,6 +70,24 @@ class TestProfile(TestCase):
         fresh = User.find(user.id)
         self.assertTrue(Hash.check("password1234", fresh.password))
 
+    def test_password_change_rotates_remember_token(self):
+        user = self.make_user(email="pwrot@example.com")
+        user.set_remember_token()
+        user.save()
+        old_token = user.remember_token
+        self.actingAs(user)
+        res = self.post(
+            "/profile/password",
+            {
+                "current_password": "password1234",
+                "password": "nuevapass1",
+                "password_confirmation": "nuevapass1",
+            },
+        )
+        res.assertRedirect()
+        fresh = User.find(user.id)
+        self.assertNotEqual(fresh.remember_token, old_token)
+
     def test_email_change_success(self):
         user = self.make_user(email="old@example.com")
         self.actingAs(user)

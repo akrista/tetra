@@ -52,7 +52,8 @@ class ProfileController(Controller):
             )
 
         user.password = Hash.make(request.input("password"))
-        user.save()
+        user.set_remember_token().save()
+        response.cookie("token", user.remember_token)
         return response.redirect("/profile").with_success("Contraseña actualizada.")
 
     def email(self, request: Request, response: Response):

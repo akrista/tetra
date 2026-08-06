@@ -1,12 +1,14 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-VE">
 
 <head>
     <title>{% block title %}{% endblock %} - Tetra</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="/favicon.ico">
-    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.bunny.net/css?family=big-shoulders-display:400,700,800,900|sora:400,500,600|ibm-plex-mono:400,500,600&display=swap">
     <link href="/static/css/app.css" rel="stylesheet">
 </head>
 
@@ -20,6 +22,10 @@
     </a>
 
     <main class="standalone">
+        <div class="standalone-art" aria-hidden="true">
+            <div class="standalone-art-slab"></div>
+            <img class="standalone-art-img" src="/static/svg/{% block art_src %}403{% endblock %}.svg" alt="">
+        </div>
         <p class="error-code">{% block code %}Oh no{% endblock %}</p>
         <div class="error-bar" aria-hidden="true"></div>
         <p class="error-msg">{% block message %}{% endblock %}</p>

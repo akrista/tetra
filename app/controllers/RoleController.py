@@ -135,7 +135,7 @@ class RoleController(Controller):
     def _find(self, request):
         try:
             role_id = int(request.param("id"))
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             return None
         return (
             Role.where("id", role_id)
@@ -148,7 +148,7 @@ class RoleController(Controller):
         if user.is_owner and not perms:
             from types import SimpleNamespace
 
-            from databases.seeds.permission_table_seeder import PERMISSIONS
+            from app.utils.rbac import PERMISSIONS
 
             return [SimpleNamespace(slug=slug, name=name) for slug, name in PERMISSIONS]
         return [p for p in perms if user.is_owner or user.can(p.slug)]

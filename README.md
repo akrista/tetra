@@ -1,34 +1,12 @@
-# tetra
+# Tetra
 
 Multi-tenant SaaS ERP. **Milestone 1: authentication foundation. Milestone 2: dashboard, users, roles & permissions, profile.**
 
-## What ships in this milestone
-
-### Milestone 2
-
-- Authenticated app shell (`/dashboard`) with time-of-day greeting, tenant context, and permission-gated navigation.
-- Tenant-scoped user management: list, create, edit, delete (`/users*`), with self-delete and last-owner guards.
-- Roles & permissions (RBAC): roles per tenant, global permission catalog (`users.manage`, `roles.manage`), assignable roles on user create/edit, owner bypass, permission-scoped route middleware.
-- User profile: edit name / phone, change password (current password required), change email (re-verification required).
-- Security: tenant scoping on every lookup, non-owners cannot modify owner accounts, role assignment / permission grants restricted to permissions the actor holds, CSRF on all POST forms.
-
-### Milestone 1
-
-- Tenants + users with email / password authentication.
-- Tenant-scoped sessions.
-- Real password hashing (bcrypt, via Masonite 5's `Authenticates` trait).
-- Real signup, login, logout.
-- Real password reset via email link (24h expiry, single-use).
-- Real email verification via signed link.
-- Tenant boundary enforced on every authenticated request.
-
-No ERP modules, no subdomain routing, no social login, no billing.
-
 ## Stack
 
-- **Python** 3.14
+- **Python** 3.12
 - **Masonite** 5 + **Masonite ORM** 3
-- **Tailwind CSS v4** + **Vite** (asset pipeline, not used by the auth templates yet)
+- **Tailwind CSS v4** + **Vite** (asset pipeline used by the auth, app, error, and maintenance templates)
 - **SQLite** (dev / test) / **Postgres** (production target)
 - **pytest** + **ruff**
 
@@ -41,33 +19,19 @@ uv sync
 # 2. Copy environment template
 cp .env-example .env
 
-# 3. Generate APP_KEY (Fernet, 44 chars)
-python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
-# Paste the printed value into APP_KEY= in .env
+# 3. Generate APP_KEY
+python craft key
 
 # 4. Create the database and seed an owner account
-rm -f database.sqlite3
 python craft migrate
-python craft seed:run
 
 # 5. Run the dev server
 python craft serve
-# → http://localhost:8000
 
 # 6. In a second terminal, watch the asset pipeline
-npm install
-npm run dev
+bun install
+bun run dev
 ```
-
-## Seeded credentials (dev only)
-
-After `craft seed:run`:
-
-- **Workspace:** Acme Workspace (slug `acme`)
-- **Owner email:** `owner@acme.test`
-- **Owner password:** `password1234`
-- **Verified:** yes (auto-verified when `MAIL_DRIVER=terminal`)
-
 ## Tests
 
 ```bash
@@ -83,6 +47,8 @@ All config is environment-driven. See `.env-example` for the full list. The non-
 - `MAIL_DRIVER=terminal` — emails print to stdout. Switch to `smtp` in production and fill `MAIL_HOST` / `MAIL_PORT` / `MAIL_USERNAME` / `MAIL_PASSWORD`.
 - `SESSION_DRIVER=cookie` — signed-cookie session, no server-side store.
 - `DB_CONNECTION=sqlite` for dev, `postgres` for production (fill the `DB_*` block).
+- `COOKIE_SECURE=false` — set `true` when serving behind HTTPS so all cookies get the `Secure` flag.
+- `AUTH_AUTO_VERIFY` — optional explicit override for auto-verifying new accounts. When unset, accounts auto-verify only under `MAIL_DRIVER=terminal` (dev convenience); with a real mail driver, email verification is enforced.
 
 ## Project structure
 
@@ -105,9 +71,24 @@ templates/
   app/                Authenticated app shell (dashboard, users, roles, profile)
   emails/             Transactional email templates
   welcome.html        Tenant-aware landing page
-tests/                pytest suite
+  tests/                pytest suite
 ```
 
-## Out of scope (intentional)
+## Roadmap
 
-Subdomain or path-based tenant routing, tenant switching UI, invitations, 2FA, social login, billing, ERP modules (invoicing, inventory, customers, finance, reporting), API tokens, audit log, production SMTP hardening, i18n, SPA / HTMX. These are explicit non-goals for milestones 1 and 2.
+Confirmed for v1:
+
+- **ERP modules** — Productos, Ventas, Almacenes, Facturación (SENIAT-compliant), Clientes, Reportes, with multi-currency (VES/USD), IVA, IGTF, and retenciones.
+- **Invitations** — token-based employee onboarding, replacing direct user creation.
+- **Audit log** — fiscal-critical events only (invoice lifecycle, stock adjustments, exchange-rate changes), not a global logger.
+- **Progressive enhancement (HTMX-style)** — interactive POS/sales flow on top of server-rendered pages. No SPA.
+- **SMTP hardening** — production mail config (TLS, SPF/DKIM) and documented credentials handling.
+
+Explicitly not in v1:
+
+- Path-based tenant routing and tenant switching — v1 is one instance per business; tenant identification is an open decision deferred to Tetra Cloud.
+- SaaS billing — self-hosted has no subscriptions; cloud tiers/pricing are undecided.
+- A standalone finance module — the fiscal core (IVA/IGTF/retenciones) plus CxC aging covers SMB needs.
+- API tokens — no integration consumer yet.
+- An i18n framework — the product is es-VE by design; strings are hardcoded Spanish.
+- 2FA — optional, owner-only TOTP; low priority, may be added later.

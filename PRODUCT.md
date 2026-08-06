@@ -63,7 +63,7 @@ Confirmed for v1:
 
 **Technical**
 - Web app, responsive, no native mobile client in v1.
-- Stack already committed: Masonite 5 + Masonite ORM 3, Python 3.14, Tailwind v4 via Vite.
+- Stack already committed: Masonite 5 + Masonite ORM 3, Python 3.12, Tailwind v4 via Vite.
 - Local dev: SQLite. Production: Postgres.
 - Backups are the operator's responsibility per instance, with documented procedures.
 
@@ -87,7 +87,7 @@ Explicitly open / not yet decided:
 
 ## Evidence on Hand
 
-- Masonite 5 starter scaffold in this repo (Python 3.14, Masonite Framework 5, Masonite ORM 3, Tailwind v4 via Vite).
+- Masonite 5 starter scaffold in this repo (Python 3.12, Masonite Framework 5, Masonite ORM 3, Tailwind v4 via Vite).
 - `app/models/User.py` already wires `Authenticates`, `Authorizes`, and `Notifiable` traits and lists `name, email, password, phone` as fillable.
 - `app/controllers/AuthController.py` provides route handlers for login, register, forgot/reset password, verify email, and logout. The current handlers are stubs that redirect without actually authenticating; they are a starting point, not a finished feature.
 - `routes/web.py` exposes the auth routes.

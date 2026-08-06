@@ -29,6 +29,9 @@ class TestCase(MasoniteTestCase):
                 builder.table(table).delete()
             except Exception:  # noqa: BLE001, S110
                 pass
+        # ponytail: wipe the throttle counter so the 5/minute per-IP limit
+        # doesn't carry across tests (file cache persists on disk).
+        self.application.make("cache").store().flush()
 
     def make_tenant(self, name="Acme Workspace", slug=None):
         from app.utils.slug import slugify

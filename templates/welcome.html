@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-VE">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token }}">
     <title>Tetra — La factura que se diseña</title>
     <link rel="icon" href="/favicon.ico">
-    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.bunny.net/css?family=big-shoulders-display:400,700,800,900|sora:400,500,600|ibm-plex-mono:400,500,600&display=swap">
     <link href="/static/css/app.css" rel="stylesheet">
 </head>
 
@@ -22,16 +24,17 @@
     -->
 
     <div class="wall">
+        <a href="#main" class="skip-link">Saltar al contenido</a>
         <div class="legacy-ghost" id="legacyGhost" aria-hidden="true"></div>
 
         <header class="topbar">
-            <div class="brand">
+            <a class="brand" href="/" aria-label="Ir a la página principal de Tetra">
                 <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <polygon points="20,3 3,28 20,37" fill="#f1ead6" />
                     <polygon points="20,3 37,28 20,37" fill="#e0a020" />
                 </svg>
                 Tetra
-            </div>
+            </a>
             <div class="topbar-meta">
                 <div>Vol. <strong>01</strong></div>
                 <div>Edición <strong>2025</strong></div>
@@ -53,7 +56,7 @@
             </nav>
         </header>
 
-        <main class="hero">
+        <main class="hero" id="main">
             <div class="hero-text">
                 <h1 class="hero-title">TETRA</h1>
                 <p class="hero-sub">
@@ -110,11 +113,11 @@
                         <table class="factura-items">
                             <thead>
                                 <tr>
-                                    <th>SKU</th>
-                                    <th>Descripción</th>
-                                    <th>Cant.</th>
-                                    <th>P. Unit.</th>
-                                    <th>Total</th>
+                                    <th scope="col">SKU</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Cant.</th>
+                                    <th scope="col">P. Unit.</th>
+                                    <th scope="col">Total</th>
                                 </tr>
                             </thead>
                             <tbody>

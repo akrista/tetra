@@ -44,6 +44,28 @@ class TestAuth(TestCase):
         self.assertEqual(user.tenant_id, tenant.id)
         self.assertTrue(user.password.startswith("$"))
         self.assertGreaterEqual(len(user.password), 60)
+        self.assertIsNotNone(user.verified_at)  # auto-verify under MAIL_DRIVER=terminal
+
+    def test_register_bootstraps_admin_role_for_owner(self):
+        from app.models.Role import Role
+
+        self.post(
+            "/register",
+            {
+                "name": "Jane Doe",
+                "email": "jane@example.com",
+                "password": "supersecret",
+                "password_confirmation": "supersecret",
+                "tenant_name": "Doe Inc",
+            },
+        )
+        tenant = Tenant.where("slug", "doe-inc").first()
+        user = User.where("email", "jane@example.com").first()
+        admin = Role.where("tenant_id", tenant.id).where("slug", "admin").first()
+        self.assertIsNotNone(admin)
+        self.assertEqual(user.role_names(), ["Administrador"])
+        self.assertTrue(user.can("users.manage"))
+        self.assertTrue(user.can("roles.manage"))
 
     def test_register_with_duplicate_email_fails(self):
         self.make_user(email="dup@example.com")
@@ -65,6 +87,14 @@ class TestAuth(TestCase):
         self.make_user(email="login@example.com")
         res = self.post(
             "/login", {"email": "login@example.com", "password": "password1234"}
+        )
+        res.assertRedirect()
+
+    def test_unverified_login_redirects_to_verify_email(self):
+        self.make_user(email="unverified@example.com", verified=False)
+        res = self.post(
+            "/login",
+            {"email": "unverified@example.com", "password": "password1234"},
         )
         res.assertRedirect()
 
@@ -173,6 +203,44 @@ class TestAuth(TestCase):
         self.assertFalse(Hash.check("anotherpass1", user2.password))
         # The first reset password works
         self.assertTrue(Hash.check("newpassword1", user2.password))
+
+    def test_password_reset_expired_token_rejected(self):
+        from datetime import timedelta
+
+        from masonite.facades import Hash
+
+        self.make_user(email="reset4@example.com")
+        self.post("/password/forgot", {"email": "reset4@example.com"})
+        row = (
+            self.application.make("builder")
+            .new()
+            .table("password_resets")
+            .where("email", "reset4@example.com")
+            .first()
+        )
+        token = row["token"]
+        # Rewrite expires_at to the past so the reset link is dead
+        past = (datetime.now(UTC) - timedelta(days=2)).replace(tzinfo=None)
+        (
+            self.application.make("builder")
+            .new()
+            .table("password_resets")
+            .where("token", token)
+            .update({"expires_at": past.isoformat(sep=" ")})
+        )
+        self.post(
+            "/password/reset",
+            {
+                "email": "reset4@example.com",
+                "password": "newpassword1",
+                "password_confirmation": "newpassword1",
+                "token": token,
+            },
+        )
+        user = User.where("email", "reset4@example.com").first()
+        # Password must still be the original one; the expired token was rejected
+        self.assertTrue(Hash.check("password1234", user.password))
+        self.assertFalse(Hash.check("newpassword1", user.password))
 
     def test_email_verification_flips_verified_at(self):
         from masonite.auth import Sign

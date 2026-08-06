@@ -23,6 +23,7 @@
             name="email"
             class="form-input"
             placeholder="tu@empresa.com"
+            autocomplete="email"
             value="{{ old('email', '') }}"
             required
             autofocus
@@ -40,15 +41,19 @@
             <label for="password" class="form-label" style="margin-bottom: 0;">Contraseña</label>
             <a href="/password/forgot" style="font-size: .8rem; color: var(--amber-deep); text-decoration: none;">¿Olvidaste tu contraseña?</a>
         </div>
-        <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-input"
-            placeholder="••••••••"
-            required
-            {% if errors and errors.has('password') %}aria-invalid="true" aria-describedby="password-error"{% endif %}
-        >
+        <div class="password-wrap">
+            <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input"
+                placeholder="••••••••"
+                autocomplete="current-password"
+                required
+                {% if errors and errors.has('password') %}aria-invalid="true" aria-describedby="password-error"{% endif %}
+            >
+            <button type="button" class="password-toggle" data-target="password" aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button>
+        </div>
         {% if errors and errors.has('password') %}
         <div id="password-error" class="error-message">
             {{ errors.get('password')[0] if errors.get('password') is not string else errors.get('password') }}

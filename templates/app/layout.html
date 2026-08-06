@@ -4,14 +4,15 @@
 
 {% block content %}
 <div class="wall">
+    <a href="#main" class="skip-link">Saltar al contenido</a>
     <header class="topbar">
-        <div class="brand">
+        <a class="brand" href="/" aria-label="Ir a la página principal de Tetra">
             <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <polygon points="20,3 3,28 20,37" fill="#f1ead6" />
                 <polygon points="20,3 37,28 20,37" fill="#e0a020" />
             </svg>
             Tetra
-        </div>
+        </a>
         <nav class="topbar-nav" aria-label="Principal">
             <a href="/dashboard" class="app-nav-link {{ 'is-active' if active_page == 'dashboard' }}">Panel</a>
             {% if user.is_owner or user.can('users.manage') %}
@@ -23,7 +24,7 @@
             <a href="/profile" class="app-nav-link {{ 'is-active' if active_page == 'profile' }}">Perfil</a>
         </nav>
         <div class="topbar-meta"><div>{{ user.tenant.name }}</div></div>
-        <nav class="topbar-nav">
+        <nav class="topbar-nav" aria-label="Cuenta">
             <span class="nav-pill">{{ user.name }}</span>
             <form method="POST" action="/logout" style="margin:0; display:inline;">
                 {{ csrf_field }}
@@ -32,7 +33,7 @@
         </nav>
     </header>
 
-    <main class="app-content">
+    <main class="app-content" id="main">
         {% if success %}
         <div class="alert-banner" role="status">{{ success }}</div>
         {% endif %}

@@ -174,7 +174,7 @@ class UserController(Controller):
     def _find(self, request):
         try:
             user_id = int(request.param("id"))
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             return None
         return (
             User.where("id", user_id)
@@ -192,7 +192,7 @@ class UserController(Controller):
     def _assignable_role(self, user, role_id):
         try:
             role_id = int(role_id)
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             return None
         role = Role.where("id", role_id).where("tenant_id", user.tenant_id).first()
         if not role or user.is_owner:
