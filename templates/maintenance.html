@@ -5,10 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantenimiento — Tetra</title>
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('tetra-theme');
+                var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            } catch (e) {}
+        })();
+    </script>
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.bunny.net/css?family=big-shoulders-display:400,700,800,900|sora:400,500,600|ibm-plex-mono:400,500,600&display=swap">
+        href="https://fonts.bunny.net/css?family=sora:400,500,600,700,800|ibm-plex-mono:400,500,600&display=swap">
     <link href="/static/css/app.css" rel="stylesheet">
 </head>
 
@@ -16,7 +25,7 @@
     <main class="standalone">
         <p class="error-code" style="font-size: clamp(3.5rem, 12vw, 7rem);">Tetra</p>
         <div class="error-bar" aria-hidden="true"></div>
-        <p class="error-msg" style="font-size: 1.35rem; font-weight: 600; color: var(--paper);">Volvemos enseguida.</p>
+        <p class="error-msg" style="font-size: 1.35rem; font-weight: 600; color: var(--text);">Volvemos enseguida.</p>
         <p class="error-msg">La aplicación está en mantenimiento por unos minutos. Vuelve pronto.</p>
     </main>
 </body>

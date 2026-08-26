@@ -8,8 +8,8 @@
     <header class="topbar">
         <a class="brand" href="/" aria-label="Ir a la página principal de Tetra">
             <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <polygon points="20,3 3,28 20,37" fill="#f1ead6" />
-                <polygon points="20,3 37,28 20,37" fill="#e0a020" />
+                <rect width="40" height="40" rx="10" fill="var(--primary)" />
+                <path d="M12 11h16v4.5h-5.75V29h-4.5V15.5H12V11z" fill="var(--primary-ink)" />
             </svg>
             Tetra
         </a>
@@ -28,8 +28,17 @@
             <span class="nav-pill">{{ user.name }}</span>
             <form method="POST" action="/logout" style="margin:0; display:inline;">
                 {{ csrf_field }}
-                <button type="submit" class="nav-pill" style="background:transparent; border:1px solid rgba(241,234,214,0.18);">Salir</button>
+                <button type="submit" class="nav-pill" style="background:transparent; border:1px solid var(--border);">Salir</button>
             </form>
+            <button type="button" class="theme-toggle" data-theme-toggle aria-label="Cambiar tema" title="Cambiar tema">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                </svg>
+            </button>
         </nav>
     </header>
 

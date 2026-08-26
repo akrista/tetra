@@ -37,6 +37,16 @@ storage/framework/views/*
 .idea/
 .DS_Store
 
+# AI agent tool configs (local only, not shared)
+.agents/
+.claude/
+.opencode/
+.agent/
+.pi/
+.github/agents/
+.github/hooks/
+.github/skills/
+
 .impeccable/config.local.json
 .impeccable/live/
 .impeccable/mocks/

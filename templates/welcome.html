@@ -5,218 +5,174 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token }}">
-    <title>Tetra — La factura que se diseña</title>
+    <title>Tetra — Tu negocio, en vivo</title>
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('tetra-theme');
+                var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            } catch (e) {}
+        })();
+    </script>
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.bunny.net/css?family=big-shoulders-display:400,700,800,900|sora:400,500,600|ibm-plex-mono:400,500,600&display=swap">
+        href="https://fonts.bunny.net/css?family=sora:400,500,600,700,800|ibm-plex-mono:400,500,600&display=swap">
     <link href="/static/css/app.css" rel="stylesheet">
 </head>
 
 <body>
     <!--
-    THESIS: Tetra is the public mural on the Venezuelan wall — the factura painted boldly where the legacy ERP's dot-matrix ghost used to be.
-    OWN-WORLD: Night wall (deep ink) with warm cream paint, sour amber signal (30-60% of surface), fiscal red stamp. Condensed display (Big Shoulders Display) carries the declaration, mono (IBM Plex Mono) carries fiscal data, geometric sans (Sora) carries body.
-    STORY: A Venezuelan SMB owner lands, sees the factura designed the way it should be, reads "La factura que se diseña. No la que se sufre.", and clicks "Crear mi negocio" to start.
-    FIRST VIEWPORT: Top bar (brand + meta + nav). Hero left: TETRA in massive condensed caps, subline, declaration with amber emphasis on "se diseña" and strike-through on "se sufre", CTA "Crear mi negocio →" and ghost "Iniciar sesión". Hero right: the painted factura with hard amber shadow, legacy dot-matrix ghost fading behind. Billing block of product truth. Footer "Pintado para PyMEs venezolanas".
-    FORM: Venezuelan street poster / mural. Position: candidate 7 of grounded list. Seed key: f8fdee6d.
+    THESIS: Tetra is the living console of the Venezuelan PyME — a real-time operations floor where green means the business is alive: stock present, sale recorded, money counted. Where legacy ERPs freeze on a 2008 screen, Tetra is live and legible.
+    OWN-WORLD: Forest-green operations system. Light theme is the paperwork day; dark theme is the operations floor (system default, persisted toggle). Sora carries display and body in a single corporate-tech voice; IBM Plex Mono carries only fiscal and data figures. Soft offset shadows, 12-16px card radii, hairline data-grid separators. One authored moment: the hero metrics count up like a live console.
+    STORY: A Venezuelan SMB owner lands, sees the console of her own business running live — sales counted, stock watched, fiscal numbers in order — reads "Tu negocio, en vivo", and clicks "Crear mi negocio" to make the console hers.
+    FIRST VIEWPORT: Top bar (brand + theme toggle). Hero left: "Tu negocio, en vivo." with green emphasis, product subline, CTA "Crear mi negocio →" and ghost "Iniciar sesión", trust line. Hero right: the live operations console — metrics counting up, weekly activity bars, recent movements, live status dot "En operación", fiscal chips. Module strip below, footer.
+    FORM: La Consola Viva. Position: candidate 6 of grounded list. Seed key: 13f9bd03.
     FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
     -->
 
     <div class="wall">
         <a href="#main" class="skip-link">Saltar al contenido</a>
-        <div class="legacy-ghost" id="legacyGhost" aria-hidden="true"></div>
 
         <header class="topbar">
             <a class="brand" href="/" aria-label="Ir a la página principal de Tetra">
                 <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <polygon points="20,3 3,28 20,37" fill="#f1ead6" />
-                    <polygon points="20,3 37,28 20,37" fill="#e0a020" />
+                    <rect width="40" height="40" rx="10" fill="var(--primary)" />
+                    <path d="M12 11h16v4.5h-5.75V29h-4.5V15.5H12V11z" fill="var(--primary-ink)" />
                 </svg>
                 Tetra
             </a>
-            <div class="topbar-meta">
-                <div>Vol. <strong>01</strong></div>
-                <div>Edición <strong>2025</strong></div>
-                <div>Tipo <strong>ERP</strong></div>
-            </div>
-            <nav class="topbar-nav">
+            <nav class="topbar-nav" aria-label="Principal">
                 {% if user %}
                 <span class="nav-pill">{{ user.name }}</span>
                 <form method="POST" action="/logout" style="margin:0; display:inline;">
                     {{ csrf_field }}
-                    <button type="submit" class="nav-pill"
-                        style="background:transparent; border:1px solid rgba(241,234,214,0.18);">Salir</button>
+                    <button type="submit" class="nav-pill" style="background:transparent; border:1px solid var(--border);">Salir</button>
                 </form>
                 {% else %}
                 <a href="/login" class="nav-pill">Entrar</a>
-                <a href="/register" class="cta" style="padding:0.55rem 1rem; font-size:0.72rem;">Crear mi negocio
+                <a href="/register" class="cta" style="padding:0.5rem 1rem; font-size:0.85rem;">Crear mi negocio
                     →</a>
                 {% endif %}
+                <button type="button" class="theme-toggle" data-theme-toggle aria-label="Cambiar tema" title="Cambiar tema">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                    </svg>
+                </button>
             </nav>
         </header>
 
         <main class="hero" id="main">
             <div class="hero-text">
-                <h1 class="hero-title">TETRA</h1>
+                <h1 class="hero-title">Tu negocio, <span class="accent">en vivo</span>.</h1>
                 <p class="hero-sub">
-                    Sistema de gestión de <strong>código abierto</strong> para PyMEs venezolanas.
-                    Inventario, ventas, almacenes y facturación fiscal — multi-moneda VES/USD,
-                    IGTF y retenciones manejados correctamente. Self-hosted. Tus datos, tu servidor, tu negocio.
+                    Tetra es la consola de operaciones de tu PyME: inventario, ventas, almacenes y
+                    facturación fiscal SENIAT en un solo panel. Multi-moneda VES/USD, IGTF y retenciones
+                    manejados correctamente. <strong>Código abierto, self-hosted y tuyo.</strong>
                 </p>
-
-                <h2 class="declaration">
-                    La factura que <em>se diseña</em>.<br>
-                    No la que <span class="strike">se sufre</span>.
-                </h2>
 
                 <div class="hero-cta">
                     <a href="/register" class="cta">Crear mi negocio <span class="cta-arrow">→</span></a>
                     <a href="/login" class="cta cta-ghost">Iniciar sesión</a>
                 </div>
+
+                <p class="hero-trust">Open source · Self-hosted · Tus datos, tu servidor</p>
             </div>
 
             <div class="hero-figure">
-                <div class="factura-stage">
-                    <div class="factura-shadow" aria-hidden="true"></div>
-                    <div class="factura" role="img"
-                        aria-label="Factura de muestra emitida por Comercializadora El Progreso, C.A.">
-                        <div class="factura-head">
-                            <div>
-                                <div class="factura-doc-type">Factura</div>
-                                <div class="factura-doc-sub">Documento fiscal — SENIAT</div>
-                            </div>
-                            <div class="factura-meta">
-                                <div class="factura-meta-row"><span>N°</span><strong>00000001</strong></div>
-                                <div class="factura-meta-row"><span>Fecha</span><strong>15/03/2025</strong></div>
-                                <div class="factura-meta-row"><span>Serie</span><strong>A</strong></div>
-                            </div>
+                <div class="console-card" role="img"
+                    aria-label="Vista previa del panel de operaciones de Tetra: ventas de hoy, facturas emitidas, stock crítico y caja del día">
+                    <header class="console-head">
+                        <p class="console-title">Panel de operaciones</p>
+                        <span class="live-pill"><span class="live-dot pulse"></span>En operación</span>
+                    </header>
+
+                    <div class="console-metrics">
+                        <div class="metric">
+                            <p class="metric-label">Ventas de hoy</p>
+                            <p class="metric-value" data-count-to="127">0</p>
+                            <p class="metric-trend up">+12 % vs ayer</p>
                         </div>
-
-                        <div class="factura-blocks">
-                            <div>
-                                <div class="factura-label">Emisor</div>
-                                <div class="factura-value">Comercializadora El Progreso, C.A.</div>
-                                <div class="factura-value mono">RIF: J-12345678-9</div>
-                                <div class="factura-value dim">Av. Principal, Edif. Centro, Local 4</div>
-                                <div class="factura-value dim">Caracas, Venezuela</div>
-                            </div>
-                            <div>
-                                <div class="factura-label">Cliente</div>
-                                <div class="factura-value">María González</div>
-                                <div class="factura-value mono">CI: V-12345678</div>
-                                <div class="factura-value dim">Calle 42, Residencias del Este</div>
-                                <div class="factura-value dim">Caracas, Venezuela</div>
-                            </div>
+                        <div class="metric">
+                            <p class="metric-label">Facturas emitidas</p>
+                            <p class="metric-value" data-count-to="89">0</p>
+                            <p class="metric-trend up">+4 hoy</p>
                         </div>
-
-                        <table class="factura-items">
-                            <thead>
-                                <tr>
-                                    <th scope="col">SKU</th>
-                                    <th scope="col">Descripción</th>
-                                    <th scope="col">Cant.</th>
-                                    <th scope="col">P. Unit.</th>
-                                    <th scope="col">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="sku">A-001</td>
-                                    <td>Arroz Mary 1kg</td>
-                                    <td>10</td>
-                                    <td>2,50</td>
-                                    <td>25,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="sku">H-002</td>
-                                    <td>Harina PAN 1kg</td>
-                                    <td>5</td>
-                                    <td>3,20</td>
-                                    <td>16,00</td>
-                                </tr>
-                                <tr>
-                                    <td class="sku">O-003</td>
-                                    <td>Aceite Mazeitex 1L</td>
-                                    <td>3</td>
-                                    <td>4,50</td>
-                                    <td>13,50</td>
-                                </tr>
-                                <tr>
-                                    <td class="sku">Z-004</td>
-                                    <td>Azúcar Blanca 1kg</td>
-                                    <td>8</td>
-                                    <td>1,80</td>
-                                    <td>14,40</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="factura-totals">
-                            <div class="totals-row"><span>Subtotal</span><span>68,90 USD</span></div>
-                            <div class="totals-row"><span>IVA 16%</span><span>11,02 USD</span></div>
-                            <div class="totals-row"><span>IGTF 3%</span><span>2,07 USD</span></div>
-                            <div class="totals-row total"><span>Total</span><span>79,92 USD</span></div>
-                            <div class="totals-row bcv"><span>Tasa BCV</span><span>36,00 Bs/USD</span></div>
-                            <div class="totals-row bcv"><span>Total Bs</span><span>2.877,12 Bs</span></div>
+                        <div class="metric">
+                            <p class="metric-label">Stock crítico</p>
+                            <p class="metric-value" data-count-to="3">0</p>
+                            <p class="metric-trend warn">reponer hoy</p>
                         </div>
-
-                        <div class="factura-foot">
-                            <span>Pago: Zelle / Transferencia / Efectivo USD</span>
-                            <span>Retención: IVA 75%</span>
+                        <div class="metric">
+                            <p class="metric-label">Caja de hoy</p>
+                            <p class="metric-value" data-count-to="2142.58" data-count-decimals="2"
+                                data-count-prefix="USD ">0</p>
+                            <p class="metric-trend up">IGTF incluido</p>
                         </div>
-
-                        <div class="factura-stamp" aria-hidden="true">FISCAL</div>
                     </div>
+
+                    <div class="console-bars">
+                        <div class="console-bars-label">
+                            <span>Actividad de la semana</span>
+                            <span>USD</span>
+                        </div>
+                        <div class="console-bars-row" aria-hidden="true">
+                            <span class="bar" style="height:32%"></span>
+                            <span class="bar" style="height:55%"></span>
+                            <span class="bar" style="height:42%"></span>
+                            <span class="bar" style="height:70%"></span>
+                            <span class="bar" style="height:48%"></span>
+                            <span class="bar hi" style="height:85%"></span>
+                            <span class="bar" style="height:62%"></span>
+                        </div>
+                        <div class="console-bars-days" aria-hidden="true">
+                            <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                        </div>
+                    </div>
+
+                    <div class="console-activity">
+                        <ul>
+                            <li><span class="act-dot ok"></span><span class="act-name">Venta #0047 · Farmacia La Esperanza</span><span class="act-amount">12,40</span></li>
+                            <li><span class="act-dot ok"></span><span class="act-name">Factura #0021 · El Progreso C.A.</span><span class="act-amount">79,92</span></li>
+                            <li><span class="act-dot ok"></span><span class="act-name">Compra · Proveedor Distribuidora Mary</span><span class="act-amount">250,00</span></li>
+                            <li><span class="act-dot"></span><span class="act-name">Retención IVA 75 % · pendiente</span><span class="act-amount">—</span></li>
+                        </ul>
+                    </div>
+
+                    <footer class="console-foot">
+                        <span class="fiscal-chip">IVA</span>
+                        <span class="fiscal-chip">IGTF 3 %</span>
+                        <span class="fiscal-chip">SENIAT</span>
+                        <span class="console-sample">Datos de muestra</span>
+                    </footer>
                 </div>
             </div>
         </main>
 
-        <section class="billing" aria-label="Características del producto">
-            <div class="billing-item amber"><span class="billing-dot"></span>Productos</div>
-            <div class="billing-item amber"><span class="billing-dot"></span>Ventas</div>
-            <div class="billing-item amber"><span class="billing-dot"></span>Almacenes</div>
-            <div class="billing-item amber"><span class="billing-dot"></span>Facturación fiscal</div>
-            <div class="billing-item amber"><span class="billing-dot"></span>Clientes</div>
-            <div class="billing-item amber"><span class="billing-dot"></span>Reportes</div>
+        <section class="billing" aria-label="Módulos del producto">
+            <div class="billing-item accent"><span class="billing-dot"></span>Productos</div>
+            <div class="billing-item accent"><span class="billing-dot"></span>Ventas</div>
+            <div class="billing-item accent"><span class="billing-dot"></span>Almacenes</div>
+            <div class="billing-item accent"><span class="billing-dot"></span>Facturación fiscal</div>
+            <div class="billing-item accent"><span class="billing-dot"></span>Clientes</div>
+            <div class="billing-item accent"><span class="billing-dot"></span>Reportes</div>
             <div class="billing-item"><span class="billing-dot"></span>Multi-moneda VES/USD</div>
-            <div class="billing-item"><span class="billing-dot"></span>IGTF</div>
-            <div class="billing-item stamp"><span class="billing-dot"></span>SENIAT</div>
+            <div class="billing-item warn"><span class="billing-dot"></span>IGTF</div>
+            <div class="billing-item warn"><span class="billing-dot"></span>SENIAT</div>
             <div class="billing-item"><span class="billing-dot"></span>Self-hosted</div>
             <div class="billing-item"><span class="billing-dot"></span>Código abierto</div>
         </section>
 
         <footer class="foot">
-            <span><strong>Tetra</strong><span class="foot-sep">·</span>Pintado para PyMEs venezolanas</span>
+            <span><strong>Tetra</strong><span class="foot-sep">·</span>La consola de tu negocio, en vivo</span>
             <span>v0.1<span class="foot-sep">·</span>Hecho en Venezuela</span>
         </footer>
     </div>
-
-    <script>
-        (function () {
-            var ghost = document.getElementById('legacyGhost');
-            if (!ghost) return;
-            var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (reduced) return;
-            var threshold = window.innerHeight * 0.35;
-            var ticking = false;
-            function update() {
-                if (window.scrollY > threshold) {
-                    ghost.classList.add('is-faded');
-                } else {
-                    ghost.classList.remove('is-faded');
-                }
-                ticking = false;
-            }
-            window.addEventListener('scroll', function () {
-                if (!ticking) {
-                    window.requestAnimationFrame(update);
-                    ticking = true;
-                }
-            }, { passive: true });
-            update();
-        })();
-    </script>
 
     <script src="/static/js/app.js"></script>
 </body>

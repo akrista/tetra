@@ -1,270 +1,312 @@
 ---
 name: Tetra
-description: La factura que se diseña — open-source ERP mural para PyMEs venezolanas
+description: Tu negocio, en vivo — open-source ERP console para PyMEs venezolanas
 colors:
-  ink: "#0e0e10"
-  ink-soft: "#1a1a1e"
-  ink-deep: "#060607"
-  paper: "#f1ead6"
-  paper-soft: "rgba(241, 234, 214, 0.78)"
-  paper-faint: "rgba(241, 234, 214, 0.42)"
-  paper-line: "rgba(241, 234, 214, 0.18)"
-  paper-line-soft: "rgba(241, 234, 214, 0.10)"
-  amber: "#e0a020"
-  amber-deep: "#b87a10"
-  amber-glow: "rgba(224, 160, 32, 0.38)"
-  amber-shadow: "rgba(224, 160, 32, 0.22)"
-  stamp: "#c2362f"
-  stamp-deep: "#8a1c1c"
+  light-bg: "#f3f6f1"
+  light-bg-soft: "#e9efe7"
+  light-surface: "#ffffff"
+  light-surface-2: "#eef3ec"
+  light-text: "#16231b"
+  light-text-soft: "#44584b"
+  light-text-faint: "#5b6d63"
+  light-primary: "#1d6e42"
+  light-primary-strong: "#165634"
+  light-primary-ink: "#ffffff"
+  light-live: "#16a35a"
+  light-amber: "#d99a13"
+  light-amber-deep: "#8a5a0a"
+  light-danger: "#b3261e"
+  dark-bg: "#0b100d"
+  dark-bg-soft: "#0e1511"
+  dark-surface: "#121b15"
+  dark-surface-2: "#17221b"
+  dark-text: "#e7efe9"
+  dark-text-soft: "#a9bdb1"
+  dark-text-faint: "#788c80"
+  dark-primary: "#3aa572"
+  dark-primary-strong: "#4cc185"
+  dark-primary-ink: "#0b140e"
+  dark-live: "#34d98b"
+  dark-amber: "#f0b95c"
+  dark-amber-deep: "#e5a83f"
+  dark-danger: "#f07067"
 typography:
-  display:
-    fontFamily: "Big Shoulders Display, Bebas Neue, Oswald, sans-serif"
-    fontWeight: 900
-    fontSize: "clamp(4.5rem, 12vw, 11rem)"
-    lineHeight: 0.82
-    letterSpacing: "-0.035em"
-  body:
+  display-body:
     fontFamily: "Sora, system-ui, -apple-system, Segoe UI, sans-serif"
     fontWeight: 400
     fontSize: "1rem"
     lineHeight: 1.5
-  mono:
+  data:
     fontFamily: "IBM Plex Mono, JetBrains Mono, ui-monospace, monospace"
     fontWeight: 500
-    fontSize: "0.72rem"
-    lineHeight: 1.5
-    letterSpacing: "0.1em"
+    fontSize: "0.78rem"
     fontFeature: "\"tnum\" 1, \"zero\" 1"
+  scale:
+    step-1: "0.6rem"
+    step-2: "0.62rem"
+    step-3: "0.64rem"
+    step-4: "0.66rem"
+    step-5: "0.68rem"
+    step-6: "0.7rem"
+    step-7: "0.72rem"
+    step-8: "0.74rem"
+    step-9: "0.75rem"
+    step-10: "0.76rem"
+    step-11: "0.78rem"
+    step-12: "0.8rem"
+    step-13: "0.82rem"
+    step-14: "0.85rem"
+    step-15: "0.9rem"
+    step-16: "0.92rem"
+    step-17: "0.95rem"
+    step-18: "1rem"
+    step-19: "1.05rem"
+    step-20: "1.15rem"
+    step-21: "1.2rem"
+    step-22: "1.25rem"
+    step-23: "1.35rem"
+    step-24: "1.5rem"
+    step-25: "1.6rem"
+    step-26: "1.9rem"
+    step-27: "2rem"
+    step-28: "2.4rem"
+    step-29: "2.6rem"
+    step-30: "3.5rem"
+    step-31: "4rem"
+    step-32: "6rem"
+    step-33: "7rem"
+    step-34: "12rem"
 rounded:
-  stamp: "50%"
+  card: "12px"
+  card-lg: "16px"
+  control: "8px"
+  bar-top: "3px"
+  pill: "999px"
 spacing:
   page-x: "2.5rem"
-  page-y: "1.5rem"
   section-y: "4rem"
-  container-max: "96rem"
-  hairline: "1.5px"
+  container-max: "80rem"
+  hairline: "1px"
 components:
   cta-primary:
-    backgroundColor: "{colors.amber}"
-    textColor: "{colors.ink}"
-    typography: "{typography.mono}"
-    padding: "0.95rem 1.5rem"
+    backgroundColor: "{colors.light-primary}"
+    textColor: "{colors.light-primary-ink}"
+    typography: "{typography.display-body}"
+    padding: "0.9rem 1.4rem"
   cta-ghost:
-    backgroundColor: "transparent"
-    textColor: "{colors.paper}"
-    typography: "{typography.mono}"
-    padding: "0.95rem 1.5rem"
+    backgroundColor: "{colors.light-surface}"
+    textColor: "{colors.light-text}"
+    typography: "{typography.display-body}"
+    padding: "0.9rem 1.4rem"
   nav-pill:
-    textColor: "{colors.paper-soft}"
-    typography: "{typography.mono}"
+    textColor: "{colors.light-text-soft}"
+    typography: "{typography.display-body}"
     padding: "0.5rem 1rem"
-  fiscal-stamp:
-    textColor: "{colors.stamp}"
-    typography: "{typography.display}"
-    size: "4.6rem"
 ---
 
 # Design System: Tetra
 
 ## Overview
 
-**Creative North Star: "El Mural de la Factura"**
+**Creative North Star: "La Consola Viva"**
 
-Tetra's visual world is a public mural on a Venezuelan wall. The night wall is deep ink; the factura is painted on top in warm cream with a hard sour-amber shadow behind it; the legacy ERP's dot-matrix residue fades into the background as you scroll. The page declares itself — "La factura que se diseña. No la que se sufre." — and invites the SMB owner to "pintar" their own business. The brand voice is a muralist, not a SaaS template.
+Tetra's visual world is a real-time operations console for the Venezuelan PyME. Forest green is the healthy operational state — stock present, sale recorded, money counted. Corporate trust comes from a precise banking-grade data grid; the "most up to date tech" signal comes from live animated figures. Light theme is the paperwork day; dark theme is the operations floor. The page runs the owner's business live in front of her: "Tu negocio, en vivo."
 
 The committed direction, lifted from the HTML comment in `templates/welcome.html`, is the binding thesis:
 
-> **THESIS:** Tetra is the public mural on the Venezuelan wall — the factura painted boldly where the legacy ERP's dot-matrix ghost used to be.
-> **OWN-WORLD:** Night wall (deep ink) with warm cream paint, sour amber signal (30–60% of surface), fiscal red stamp. Condensed display (Big Shoulders Display) carries the declaration, mono (IBM Plex Mono) carries fiscal data, geometric sans (Sora) carries body.
-> **STORY:** A Venezuelan SMB owner lands, sees the factura designed the way it should be, reads "La factura que se diseña. No la que se sufre.", and clicks "Crear mi negocio" to start.
-> **FIRST VIEWPORT:** Top bar (brand + meta + nav). Hero left: TETRA in massive condensed caps, subline, declaration with amber emphasis on "se diseña" and strike-through on "se sufre", CTA "Crear mi negocio →" and ghost "Iniciar sesión". Hero right: the painted factura with hard amber shadow, legacy dot-matrix ghost fading behind. Billing block of product truth. Footer "Pintado para PyMEs venezolanas".
-> **FORM:** Venezuelan street poster / mural. Position: candidate 7 of grounded list. Seed key: f8fdee6d.
+> **THESIS:** Tetra is the living console of the Venezuelan PyME — a real-time operations floor where green means the business is alive: stock present, sale recorded, money counted. Where legacy ERPs freeze on a 2008 screen, Tetra is live and legible.
+> **OWN-WORLD:** Forest-green operations system. Light theme is the paperwork day; dark theme is the operations floor (system default, persisted toggle). Sora carries display and body in a single corporate-tech voice; IBM Plex Mono carries only fiscal and data figures. Soft offset shadows, 12–16px card radii, hairline data-grid separators. One authored moment: the hero metrics count up like a live console.
+> **STORY:** A Venezuelan SMB owner lands, sees the console of her own business running live — sales counted, stock watched, fiscal numbers in order — reads "Tu negocio, en vivo", and clicks "Crear mi negocio" to make the console hers.
+> **FIRST VIEWPORT:** Top bar (brand + theme toggle). Hero left: "Tu negocio, en vivo." with green emphasis, product subline, CTA "Crear mi negocio →" and ghost "Iniciar sesión", trust line. Hero right: the live operations console — metrics counting up, weekly activity bars, recent movements, live status dot "En operación", fiscal chips. Module strip below, footer.
+> **FORM:** La Consola Viva. Position: candidate 6 of grounded list. Seed key: 13f9bd03.
 
 **Key Characteristics:**
-- **Sharp by default.** The only rounded element in the system is the FISCAL stamp (a circle). Everything else is 90° corners, ink hairlines, no card radii.
-- **Three typefaces, three jobs.** Condensed display (Big Shoulders Display) declares; mono (IBM Plex Mono) carries fiscal data and metadata; geometric sans (Sora) carries body. No overlap.
-- **Amber is the signal, not the chrome.** Sour amber (`#e0a020`) carries the CTA, the declaration emphasis, the brand-mark half, and the factura's hard offset shadow. It is the painter's color, not a brand tint.
-- **Fiscal red is a stamp, not a palette.** A single circular FISCAL stamp, rotated -14°, sitting on top of the factura. Never used elsewhere.
-- **One authored moment.** The legacy dot-matrix ghost fades as the user scrolls past the first viewport. Nothing else animates.
+- **Theme is a first-class feature, not a skin.** The system ships both themes in CSS variables. Light = `:root`, dark = `:root[data-theme="dark"]`. An inline head script sets `data-theme` on `<html>` from `localStorage('tetra-theme')` before first paint, defaulting to `prefers-color-scheme`. The top-bar toggle flips it and persists. Every surface (landing, auth, app shell, errors) runs the same token system.
+- **One typeface family, three weights; mono has one job.** Sora (400–800) carries every display, heading, and body string. IBM Plex Mono carries only fiscal and data figures (`"tnum" 1, "zero" 1` for tabular alignment). No Big Shoulders, no secondary display face — a single voice reads as modern corporate tech.
+- **Green is the signal.** Forest `--primary` drives CTAs, links, the brand mark, active nav, summary values, success banners. `--live` (brighter green) drives the pulsing operational dot. Amber is reduced to a warning accent (low stock, IGTF/SENIAT notes); danger red is reserved for destructive actions and errors.
+- **Elevation is soft, never hard.** 8/12/16px radii and soft offset+blur shadows. No 90° corners, no `4px 4px 0` slabs — a clean break from the previous mural world.
+- **One authored moment.** The hero console metrics count up on load (easeOutExpo, es-VE formatting) plus a slow `livePulse` on the operational dot. Everything else is hover/focus transitions. `prefers-reduced-motion: reduce` kills all of it.
 - **Spanish-first, es-VE.** All copy is Spanish. No translation artefacts.
 
-Open product decisions that future design work must not silently close (from `PRODUCT.md` § Capabilities and Constraints, lines 70–79): final OSS license (AGPL-3.0 working default); single-tenant vs multi-sucursal in v1; inventory costing method (FIFO / LIFO / weighted average); direct SENIAT / fiscal-printer integration vs printable-document-only; offline / degraded-network mode depth; legacy ERP and Excel importer priority and depth; managed-cloud plan tiers and pricing; subdomain vs path vs header for tenant identification in the future managed cloud. New surfaces ship as the world, not as answers to these.
+Open product decisions that future design work must not silently close (from `PRODUCT.md` § Capabilities and Constraints): final OSS license (AGPL-3.0 working default); single-tenant vs multi-sucursal in v1; inventory costing method; direct SENIAT / fiscal-printer integration vs printable-document-only; offline / degraded-network mode depth; legacy ERP and Excel importer priority and depth; managed-cloud plan tiers and pricing; tenant identification strategy. New surfaces ship as the world, not as answers to these.
+
+## Theme System
+
+- **Defaults to the OS.** First visit: `matchMedia('(prefers-color-scheme: dark)')` decides. No flash of wrong theme: the inline script runs in `<head>` before the stylesheet loads.
+- **Persists the manual choice.** The top-bar `.theme-toggle` flips `html[data-theme]` and writes `localStorage['tetra-theme']` to `dark` / `light`. A stored value always wins over the OS.
+- **Toggle affordance.** The button always shows both sun and moon glyphs; CSS hides the moon in light and the sun in dark, so the label reads as "switch to the other theme." `aria-label="Cambiar tema"`.
+- **Token pairs.** Every color exists in both themes under the same name (`--bg`, `--surface`, `--text`, `--primary`, …). Components reference tokens only — a new surface is themed for free.
 
 ## Colors
 
-The palette is a mural in three layers: the night wall underneath, the painted factura on top, and the amber/red signal that says "this is the new one." Every color has a job and a role in the layering; none are decorative.
+The palette is a forest in two states: paperwork day (light) and operations floor (dark). Green is health; amber is a warning; red is an error. Every color has a job; none are decorative.
 
-### Primary
-- **Sour Amber** (`#e0a020`): the painter's color. The CTA background, the brand mark's right half, the declaration emphasis, the hard offset shadow under the factura, the billing amber dots. Sits at 30–60% of the visible surface by design.
-- **Amber Deep** (`#b87a10`): amber-against-paper. The totals-row total value (amber printed on the cream paper factura).
-- **Amber Glow** (`rgba(224, 160, 32, 0.38)`): reserved for soft amber halos on future surfaces. Defined, no consumer in v1.
-- **Amber Shadow** (`rgba(224, 160, 32, 0.22)`): reserved for low-opacity amber underlays on future surfaces. Defined, no consumer in v1.
+### Light theme (`:root`)
+- **Forest Primary** (`#1d6e42`): the brand green. CTAs, links, brand mark, active nav, summary values, success banners. `--primary-strong` (`#165634`) is the pressed/hover shade; `--primary-ink` (`#ffffff`) is text on primary; `--primary-soft` (`rgba(29,110,66,.10)`) is green-tinted fills (active nav pill, focus contexts).
+- **Live** (`#16a35a`): brighter operational green. The pulsing dot and "En operación" status. `--live-ring` (`rgba(22,163,90,.45)`) is the pulse ring.
+- **Amber** (`#d99a13`): warning accent. Low-stock trends, IGTF/SENIAT notes, owner-badge. `--amber-deep` (`#8a5a0a`) is amber text on light; `--amber-soft` (`rgba(217,154,19,.12)`) is amber fills.
+- **Danger** (`#b3261e`): destructive actions and errors. `--danger-soft` (`rgba(179,38,30,.10)`) is error fills.
+- **Neutrals:** `--bg` `#f3f6f1` (paperwork day), `--bg-soft` `#e9efe7` (showcase panels), `--surface` `#ffffff` (cards), `--surface-2` `#eef3ec` (table hover / inset), `--text` `#16231b`, `--text-soft` `#44584b` (secondary), `--text-faint` `#5b6d63` (tertiary, mono labels — ≥4.5:1 on light). `--border` `rgba(23,51,35,.12)` (hairlines), `--border-strong` `rgba(23,51,35,.26)`.
 
-### Tertiary
-- **Fiscal Red** (`#c2362f`): the stamp. Used only for the circular FISCAL stamp on the factura and the strike-through on "se sufre." Its rarity is the point: red never decorates anything else.
-- **Stamp Deep** (`#8a1c1c`): reserved for red-on-paper contexts on future surfaces. Defined, no consumer in v1.
+### Dark theme (`:root[data-theme="dark"]`)
+- **Forest Primary** (`#3aa572`): brightened for dark. `--primary-strong` (`#4cc185`), `--primary-ink` (`#0b140e`) — dark text on the lighter green button, `--primary-soft` (`rgba(58,165,114,.16)`).
+- **Live** (`#34d98b`), `--live-ring` (`rgba(52,217,139,.45)`).
+- **Amber** (`#f0b95c`) / `--amber-deep` (`#e5a83f`) / `--amber-soft` (`rgba(240,185,92,.14)`).
+- **Danger** (`#f07067`) / `--danger-soft` (`rgba(240,112,103,.14)`).
+- **Neutrals:** `--bg` `#0b100d` (operations floor), `--bg-soft` `#0e1511`, `--surface` `#121b15`, `--surface-2` `#17221b`, `--surface-hover` `#1a271e`, `--text` `#e7efe9`, `--text-soft` `#a9bdb1`, `--text-faint` `#788c80`. `--border` `rgba(196,224,206,.13)`, `--border-strong` `rgba(196,224,206,.24)`.
 
-### Neutral
-- **Deep Ink** (`#0e0e10`): the wall. Page background, factura border and body text, the hover state for the primary CTA. The night the mural sits on.
-- **Ink Soft** (`#1a1a1e`): reserved for layered surfaces over the wall (cards, modals). Defined, no consumer in v1.
-- **Ink Deep** (`#060607`): reserved for the deepest voids (e.g. modal scrims). Defined, no consumer in v1.
-- **Warm Cream Paper** (`#f1ead6`): the paint. The factura background, the primary text color on the wall, the TETRA wordmark, the declaration body, the hover swap state for the ghost CTA.
-- **Paper Soft** (`rgba(241, 234, 214, 0.78)`): secondary text on the wall. Top-bar meta strong, hero sub, nav pill, billing, footer.
-- **Paper Faint** (`rgba(241, 234, 214, 0.42)`): tertiary text on the wall. Top-bar meta values, declaration strike text, footer.
-- **Paper Line** (`rgba(241, 234, 214, 0.18)`): hairlines on the wall. Nav pill border, ghost CTA border, footer separator.
-- **Paper Line Soft** (`rgba(241, 234, 214, 0.10)`): the faintest hairlines. Top-bar border-bottom.
-
-**The Amber Surface Rule.** Sour amber is the only color allowed to cover significant wall area (30–60% of any surface). Cream paint and ink text are the defaults; amber is the highlight that proves the highlight exists. If amber appears on every section, it is no longer a signal.
-
-**The Stamp Singularity Rule.** Fiscal red (`#c2362f`) appears only inside the FISCAL stamp. It is not a palette accent; it is the stamp. A red line, red button, red badge, or red border anywhere else breaks the world.
+### Rules
+**The Green-Is-Health Rule.** Green means the business is operating: primary for action, live for live status, primary-soft for fills. It is the palette's signal color, used generously but never as background wallpaper.
+**The Amber-Is-Warning Rule.** Amber marks attention: low stock, pending fiscal notes, unverified owners. It never competes with green for action.
+**The Contrast Floor.** Body text and any label ≥4.5:1 against its background in both themes. `--text-faint` exists only where it clears the floor (measured 5.05:1 light, 5.36:1 dark).
 
 ## Typography
 
-**Display Font:** Big Shoulders Display (Bebas Neue, Oswald, sans-serif) — condensed, poster.
-**Body Font:** Sora (system-ui, -apple-system, Segoe UI, sans-serif) — geometric sans.
-**Label/Mono Font:** IBM Plex Mono (JetBrains Mono, ui-monospace, monospace) — fiscal data and labels.
+**Display + Body Font:** Sora (system-ui, -apple-system, Segoe UI, sans-serif) — geometric, modern, corporate-tech.
+**Data Font:** IBM Plex Mono (JetBrains Mono, ui-monospace, monospace) — fiscal and data figures only, with `font-feature-settings: "tnum" 1, "zero" 1`.
 
-**Character:** Three faces, three jobs, no overlap. Big Shoulders Display shouts the declaration. IBM Plex Mono counts, labels, and dates with tabular numbers and a slashed zero. Sora explains. The hierarchy is enforced by role, not by weight alone.
+**Character:** One family, one voice. Sora 800 with tight tracking carries display; Sora 400 explains. IBM Plex Mono counts. The system is deliberately single-voice — a second display face would read as decorative, not operational.
 
-### Hierarchy
-- **Hero Title** (weight 900, `clamp(4.5rem, 12vw, 11rem)`, line-height 0.82, letter-spacing -0.035em, uppercase): the TETRA wordmark in the hero. The single loudest voice on the page. Collapses to `clamp(3.5rem, 16vw, 6rem)` on tablets and `clamp(2.8rem, 14vw, 4.5rem)` on phones. The display scale runs past the 6rem floor deliberately — the world is poster-scale, the wall is the room.
-- **Declaration** (weight 800, `clamp(1.5rem, 2.6vw, 2.4rem)`, line-height 1.05, uppercase): the "se diseña / se sufre" line under a 2px amber top-border.
-- **Display Inline** (weight 800, 1.4–1.7rem, line-height 1, uppercase): brand wordmark (1.4rem), factura "Factura" doc-type (1.7rem), FISCAL stamp text (0.75rem).
-- **Body** (weight 400, 1rem, line-height 1.5): explanations — the hero sub, 0.98rem at desktop / 0.92rem on phones, max-width 30rem (≈ 65ch).
-- **Mono Label** (weight 500–600, 0.6–0.85rem, uppercase, letter-spacing 0.1–0.18em, `font-feature-settings: "tnum" 1, "zero" 1`): every fiscal label, every total, every nav pill, every meta strip. The mono carries data; never use it as decoration.
+### Type Ramp (light = dark, tokens not needed — type is theme-independent)
+- **Hero Title** (Sora 800, `clamp(2.6rem, 5.2vw, 4rem)`, line-height 1.05, letter-spacing -0.03em): the landing h1.
+- **Page Title** (Sora 800, `clamp(1.9rem, 3.5vw, 2.6rem)`, letter-spacing -0.02em): dashboard/app page heads.
+- **Auth Title** (Sora 800, 1.9rem): auth-card headings.
+- **Section / Card Title** (Sora 600–700, 1–1.15rem): panel and card headings.
+- **Body** (Sora 400, 0.98–1rem, line-height 1.6): sublines, descriptions, form text. Hero sub capped at `max-width: 30rem`.
+- **Meta / Small** (Sora 400–500, 0.78–0.85rem): secondary text, trust line, table cells.
+- **Data / Fiscal (mono)** (IBM Plex Mono 400–600, 0.6–1rem): every metric value, monetary figure, SKU, date, table numeric, version string. Never used for prose. The metric value is mono 1.6rem weight 600; the summary value is mono 2rem weight 600.
 
 ### Named Rules
-**The Three-Job Rule.** Each typeface has one job. Big Shoulders Display declares (poster headlines, brand mark, FISCAL stamp, factura doc-type). IBM Plex Mono counts (every monetary value, every SKU, every date, every navigation pill). Sora explains (hero sub, and any longer-form body copy in future surfaces). Reassigning a face to a job it does not own breaks the system.
-
-**The Mono Has a Reason Rule.** Mono is fiscal data, not costume. If a string has no number, date, or label attached to a number, it is not mono. The nav pill is mono because it is a control. The footer is mono because it carries version metadata. A long paragraph in mono is a fail.
+**The Data-Mono Rule.** Mono is fiscal data, not costume. If a string has no number, date, or label attached to a number, it is Sora. The metric tiles, tables, totals, and fiscal chips are mono; paragraphs and headings never are.
+**The No-Kicker Rule.** No kicker, eyebrow, or section number above a heading. The green accent span inside a heading (`.accent`) is the only emphasis device.
 
 ## Layout
 
-The page is a mural: one viewport, one composition. The container is centered at `max-width: 96rem` with `2.5rem` side padding at desktop, `1.5rem` at tablet, `1.25rem` at phone. The hero is a two-column grid (`1.05fr` / `1fr`) with a `4rem` gap; it collapses to a single column at `max-width: 960px` and below.
+The container is centered at `max-width: 80rem` with `2.5rem` side padding at desktop, `1.5rem` at tablet, `1.25rem` at phone. The landing hero is a two-column grid (`minmax(0,1fr)` / `minmax(20rem,26rem)`) with a `3rem` gap, collapsing to one column at `max-width: 960px`. The auth shell is `1fr` / `30rem` at desktop, one column below `1024px`. The app content is `max-width: 64rem`.
 
-Vertical rhythm: top bar (`1.5rem` padding, `1px` paper-line-soft bottom hairline), hero (`4rem` top / `2.5rem` bottom), billing block (`1.5rem` padding bracketed by 1.5px paper-line hairlines top and bottom), footer (`2rem` top / `2.5rem` bottom). The mural reads top-down as four horizontal bands: top bar → hero → billing → footer. Each band is full-bleed within the container; the wall runs the full viewport.
-
-Layering: the legacy ghost is absolutely positioned over the entire `.wall` at `z-index: 0` with a linear mask that fades from solid at the top to transparent at 75% of the height. The hero sits on `z-index: 1`, the top bar on `z-index: 2`. The factura sits on `z-index: 1` inside its stage; its amber shadow sits on `z-index: 0` (offset 1.4rem / 1.4rem).
+Vertical rhythm: top bar (`1.25rem` padding, `1px` border-bottom), hero (`4rem` top / `2.5rem` bottom), billing strip (`1.5rem` padding bracketed by `1px` hairlines), footer (`2rem` top / `2.5rem` bottom).
 
 ## Elevation & Depth
 
-Depth in this world is hard offset shadow, not soft blur. The factura has a 1.4rem / 1.4rem amber slab behind it (a translated, slightly-blurred copy of itself in `--amber`). The primary CTA, on hover, lifts 2px in each direction and reveals a 4px / 4px ink slab (no blur). The ghost CTA, on hover, reveals a 4px / 4px amber slab. There is no soft ambient shadow anywhere; depth is always a colored block under a surface, never a gray halo.
+Depth is soft, from the tokenized shadow ramp:
+- `--shadow-sm`: `0 1px 2px rgba(16,32,24,.06)` — cards, inputs.
+- `--shadow-md`: `0 4px 12px rgba(16,32,24,.08)` — auth card, popovers.
+- `--shadow-lg`: `0 12px 32px rgba(16,32,24,.12)` — the hero console card.
 
-### Shadow Vocabulary
-- **Factura slab** (background: `--amber`, `transform: translate(1.4rem, 1.4rem)`, `filter: blur(0.5px)`): the painted factura's hard offset shadow. Amber against ink.
-- **CTA hover slab** (`box-shadow: 4px 4px 0 var(--ink)`): the primary CTA's hover state. Paint swap (amber → paper) plus an ink slab; surface translates -2px / -2px.
-- **Ghost CTA hover slab** (`box-shadow: 4px 4px 0 var(--amber)`): the ghost CTA's hover state. Paint swap (transparent → paper) plus an amber slab.
-
-**The Hard-Offset Rule.** Depth is a colored block under a surface, never a soft halo. A zero-blur offset shadow (`4px 4px 0`) on hover is the only sanctioned depth idiom. Soft drop shadows, ambient glows, and 1px borders under wide shadows are out of the world.
+**The Soft-Elevation Rule.** Depth is a soft offset+blur shadow, never a hard colored slab, never a 1px border under a heavy shadow. The console card carries `--shadow-lg` and no border; a quiet surface carries `--shadow-sm` plus a `--border` hairline.
 
 ## Shapes
 
-The form language is sharp. Every container, button, nav pill, billing item, and the factura itself uses 90° corners. The only rounded element in the system is the FISCAL stamp, which is a perfect circle (`border-radius: 50%`, 4.6rem diameter at desktop, 3.6rem on phones) rotated -14° with a 1px inner ring.
+Radii come from three tokens: `--radius-sm: 8px` (buttons, inputs, badges), `--radius: 12px` (cards, panels, nav pills are a 999px exception), `--radius-lg: 16px` (the hero console card, auth card emphasis). Focus is a green ring: `--focus-ring: 0 0 0 3px rgba(...)` in the theme's primary.
 
-Borders are ink hairlines (`1.5px` solid `--ink`) on the paper factura, and paper-line hairlines (`1px` solid `rgba(241, 234, 214, 0.18)`) on the wall. The top bar has a faint hairline divider (`1px` solid `rgba(241, 234, 214, 0.10)`). The billing block is bracketed by 1.5px paper-line hairlines top and bottom. The declaration is preceded by a 2px amber top-border. No element uses a colored `border-left` or `border-right` above 1px.
-
-**The Sharp-By-Default Rule.** Every container, button, and field is 90° corners. The FISCAL stamp is the only rounded element. Card radii (12–16px) and pill radii are not in this world.
+**The Rounded-Control Rule.** Controls and cards are gently rounded; pills are reserved for navigation/status chips. Nothing is sharp-cornered.
 
 ## Components
 
 ### Buttons
-- **Shape:** sharp 90° corners, 1.5px border, mono typography.
-- **Primary (`.cta`):** amber background, ink text, amber border. Hover swaps to paper background, adds 4px / 4px 0 ink offset shadow, translates -2px / -2px. The trailing arrow (`.cta-arrow`) slides 4px right on hover.
-- **Ghost (`.cta-ghost`):** transparent background, paper text, paper-line border. Hover swaps to paper background, ink text, 4px / 4px 0 amber offset shadow.
-- **Focus-visible:** 2px amber outline, 3px offset. Same for the nav pill.
-- **Motion:** all hover transitions are 0.15s linear (browser default easing). Reduced-motion preference disables them.
+- **Primary (`.cta`, `.btn`):** forest primary background, `--primary-ink` text, `--radius-sm`. Hover: `--primary-strong`. The trailing arrow (`.cta-arrow`) is mono and slides 4px right on hover.
+- **Ghost (`.cta-ghost`, `.btn-ghost`):** `--surface` background, `--border`, `--text`. Hover: surface-hover + border-strong.
+- **Danger (`.btn-stamp`):** transparent, danger border+text. Hover: danger background, white text. Destructive actions only.
+- **Focus-visible:** `--focus-ring` (green) on every control.
+- **Motion:** transitions 0.15–0.2s ease. Reduced-motion disables them.
 
-### Nav Pills (`.nav-pill`)
-- **Shape:** sharp 90° corners, 1px paper-line border, mono uppercase at 0.72rem with 0.1em letter-spacing.
-- **Color:** paper-soft text on the wall; hovers to amber text and amber border.
-- **Used for:** the "Entrar" pill in the top bar and the per-user sign-out pill (with an inline override for a transparent background and paper-line border).
+### Nav Pills (`.nav-pill`, `.app-nav-link`)
+- **Shape:** 999px pill, `--radius-sm` padding `0.5rem 1rem`, Sora 0.85rem, `--text-soft`.
+- **Active (`.is-active`):** `--primary-soft` background, `--primary` text. In the app shell, the active link is the current module.
 
 ### Top Bar (`.topbar`)
-- **Layout:** flex with `justify-content: space-between`, gap 2rem, padding 1.5rem 2.5rem, bottom hairline (`1px` solid `--paper-line-soft`).
-- **Brand (`.brand`):** 1.9rem custom SVG mark (two triangles — cream on the left, amber on the right) + "Tetra" wordmark in display face, weight 800, 1.4rem, uppercase.
-- **Top-bar meta (`.topbar-meta`):** flex of three data points (Vol/Edición/Tipo) in mono at 0.65rem, paper-faint text, paper-soft values, uppercase, 0.14em letter-spacing. Hidden under 960px.
+- **Layout:** flex, `justify-content: space-between`, padding `1.25rem 2.5rem` (`1.5rem` ≤960px), `1px` `--border` bottom hairline, `--topbar-bg` (surface).
+- **Brand (`.brand`):** 1.9rem custom SVG mark — a `40×40` green tile (`rx="10"`) with a cream "T" cut inside — plus the "Tetra" wordmark (Sora 700, 1.15rem).
+- **Theme toggle (`.theme-toggle`):** 2.5rem circle, border, hover surface-hover. Shows the sun in light, the moon in dark.
+- **Meta (`.topbar-meta`):** app-shell tenant name, mono, `--text-faint`. Hidden ≤960px.
 
-### Hero Text (`.hero-text`)
-- **Title (`.hero-title`):** Big Shoulders Display, weight 900, `clamp(4.5rem, 12vw, 11rem)`, line-height 0.82, letter-spacing -0.035em.
-- **Sub (`.hero-sub`):** Sora, 0.98rem, paper-soft, max-width 30rem.
-- **Declaration (`.declaration`):** display face, weight 800, `clamp(1.5rem, 2.6vw, 2.4rem)`, line-height 1.05, 2.5rem top margin, 2px amber top border, 1.5rem top padding. `<em>` for "se diseña" is amber weight 900. `<span class="strike">` for "se sufre" is paper-faint with a 3px stamp-red line-through.
+### Landing Hero (`.hero`)
+- **Left column:** h1 "Tu negocio, **en vivo**." with the `.accent` span in forest primary; `.hero-sub` product subline; `.hero-cta` (primary "Crear mi negocio →" + ghost "Iniciar sesión"); `.hero-trust` line ("Open source · Self-hosted · Tus datos, tu servidor").
+- **Right column (`.hero-figure`):** the live console demo (`.console-card`).
 
-### The Painted Factura (`.factura`)
-- **Shape:** paper background, 1.5px ink border, mono typography, tabular numbers, 1.5rem / 1.6rem padding. Sits on a `.factura-shadow` amber slab translated 1.4rem / 1.4rem.
-- **Head:** "Factura" doc-type in display face, weight 800, 1.7rem; meta strip on the right (N° / Fecha / Serie) in mono 0.7rem.
-- **Blocks:** two-column grid (emisor / cliente) with `factura-label` (0.58rem mono, 0.18em tracking, ink-60%) and `factura-value` (0.76rem). Dim variants use `rgba(14, 14, 16, 0.65)`.
-- **Items table:** SKU / Descripción / Cant. / P. Unit. / Total; numeric columns right-aligned; SKU dimmed; 0.55rem mono headers; 1px ink hairlines between rows.
-- **Totals:** right-aligned 65%-width column; rows in mono 0.76rem with hairline separators. The `total` row is weight 700, 1.02rem, with a 2px ink border above and below and an amber-deep value. Two `bcv` rows beneath carry the BCV rate and the bolívar total at 0.68rem, no border.
-- **Foot:** mono 0.6rem, paper-line hairline, uppercase, 0.12em tracking.
-- **FISCAL Stamp (`.factura-stamp`):** 4.6rem circle, 3px stamp-red border, inner 1px ring, display-face text at 0.75rem, rotated -14°, opacity 0.92. Bottom-right of the factura.
+### The Console Card (`.console-card`) — the hero proof
+- **Shell:** `--surface`, `--radius-lg`, `--shadow-lg`, no border. A `::before` radial `--primary-soft` glow sits behind the hero grid (subtle, non-decorative depth).
+- **Head (`.console-head`):** title "Panel de operaciones" (Sora 600) + `.live-pill` ("En operación") — `--primary-soft` pill with a `.live-dot.pulse` green dot.
+- **Metrics (`.console-metrics`):** 2-column grid, `gap: 1px`, `background: var(--border)` producing hairline dividers between cells. Each `.metric` has `.metric-label` (mono, `--text-faint`, uppercase) and `.metric-value` (mono 1.6rem 600) with a `.metric-trend` (`.up` in primary, `.warn` in amber).
+- **Bars (`.console-bars`):** 7 mono day labels (L M M J V S D) over a 7-column bar row; `.bar.hi` marks the peak day in primary, the rest `--primary-soft`.
+- **Activity (`.console-activity`):** recent-movement list — name + amount, `--border` hairlines, `.act-dot.ok` green ticks.
+- **Foot (`.console-foot`):** `.fiscal-chip` amber pills (IVA / IGTF 3% / SENIAT) + `.console-sample` "Datos de muestra".
+- **Semantics:** the whole card is `role="img"` with an `aria-label` describing the demo; the count-up lives on `data-count-to` / `data-count-decimals` / `data-count-prefix` attributes driven by `app.js`.
 
-### Billing Block (`.billing`)
-- **Layout:** full-bleed band, 1.5px paper-line hairlines top and bottom, flex wrap with `0.5rem 1.6rem` gap, centered.
-- **Item:** a 0.42rem paper-soft dot + a mono uppercase label at 0.72rem, 0.1em letter-spacing.
-- **Variants:** `.amber` paints the dot and text amber (Productos, Ventas, Almacenes, Facturación fiscal, Clientes, Reportes). `.stamp` paints the dot and text fiscal red (SENIAT). Default items are paper-soft (Multi-moneda VES/USD, IGTF, Self-hosted, Código abierto).
+### Billing Strip (`.billing`)
+- Full-bleed band bracketed by `1px` hairlines; `.billing-item` pills with a `.billing-dot`. `.accent` items are green (Productos, Ventas, Almacenes, Facturación fiscal, Clientes, Reportes); `.warn` items amber (IGTF, SENIAT); default items neutral (Multi-moneda, Self-hosted, Código abierto).
 
 ### Footer (`.foot`)
-- **Layout:** flex with `justify-content: space-between`, 2rem / 2.5rem padding, mono 0.7rem uppercase paper-faint.
-- **Content:** "Tetra · Pintado para PyMEs venezolanas" on the left; "v0.1 · Hecho en Venezuela" on the right. Brand strong in paper-soft, version mono paper-faint.
+- Flex, space-between, mono 0.7rem uppercase `--text-faint`. Left: "Tetra · La consola de tu negocio, en vivo". Right: "v0.1 · Hecho en Venezuela".
 
-### Legacy Ghost (`.legacy-ghost`) — the one authored moment
-- **Layer:** absolute over `.wall`, inset 0, z-index 0, opacity 0.18 at rest.
-- **Pattern:** `radial-gradient(circle, var(--paper-faint) 0.9px, transparent 1.4px)` at 5px / 5px tile. Reads as dot-matrix residue.
-- **Mask:** linear gradient from solid at the top to transparent at 75% of the height (fades downward).
-- **Motion:** `transition: opacity 0.5s ease`; scroll handler toggles `.is-faded` (opacity 0.05) when `scrollY > innerHeight * 0.35`. rAF-throttled. Respects `prefers-reduced-motion: reduce` (skips the listener entirely).
+### Auth Shell (`.auth-shell`)
+- **Showcase (`.auth-showcase`, desktop ≥1024px):** `--bg-soft` panel with the brand, the declaration "Tu negocio, en vivo. La consola de tus operaciones." with `.accent`, and a `.auth-features` list (Inventario y ventas en tiempo real / Facturación fiscal SENIAT / SENIAT · IVA · IGTF / VES + USD) — each item prefixed by a green live dot.
+- **Form pane (`.auth-form-pane`):** the `.auth-card` on `--surface`, `--radius-lg`, `--shadow-md`. `.auth-mobile-brand` replaces the showcase on ≤960px.
+- **Form controls:** `.form-label` (mono uppercase, `--text-faint`), `.form-input` (`--radius-sm`, `--border`; focus = primary border + `--focus-ring`; `[aria-invalid]` = danger border), `.password-wrap` + `.password-toggle`, `.form-check` with `accent-color: var(--primary)`, `.error-message` (danger), `.alert-banner` (green default; `[role="alert"]` becomes red), `.auth-icon` (4.5rem green tile for verify_email).
 
-### Brand Mark (`.brand-mark` SVG)
-- 1.9rem square SVG inside the brand slot. Two triangles forming a stylised "T" in the brand colors: cream on the left (`fill: #f1ead6`), amber on the right (`fill: #e0a020`). Source the vector; do not recreate as text.
+### App Shell (`.app-content`)
+- **Page head (`.page-head`):** `.page-title` + `.page-sub` + `.page-actions` (primary + ghost buttons). Column-stacks ≤960px.
+- **Panels (`.panel`):** `--surface`, `--radius-lg`, `--shadow-sm`, `.panel-title`.
+- **Tables (`.data-table`):** mono cells, `--text-faint` uppercase headers, row hover `--surface-2`, wrapped in `.data-scroll`. `.table-action` (primary), `-danger`, `-disabled`.
+- **Summary (`.summary-grid`):** auto-fit cards; `.summary-card` hover raises a primary border; `.summary-value` mono 2rem primary.
+- **Badges:** `.role-badge` (green), `.owner-badge` (amber).
+- **States:** `.empty-state`, `.form-actions` + `.form-notes`, `.confirm-inline` (danger inline confirm).
+
+### Error Pages (`.standalone`)
+- **Art:** the existing warm-sunset SVG illustrations (`storage/static/svg/{403,404,500,503}.svg`) sit on a `--primary-soft` slab (`.standalone-art-slab`) with an 0.85rem translate — the slab frames the old art in the new green world.
+- **Code (`.error-code`):** Sora 800, `clamp(6rem,22vw,12rem)`, letter-spacing -0.04em. `.error-bar` is a short primary pill; `.error-msg` explains; `.standalone-actions` offers the CTA.
+- **Brand (`.standalone-brand`):** the green-tile mark, linked to `/`.
+
+### Emails (`.emails/layout.html`)
+- Inline-styled, theme-independent (email clients ignore the app theme). Dark `#0b100d` outer, `#f3f6f1` card, Sora 800 headings in `#16231b` (system font stack, no CDN), `.btn` `#1d6e42` background, `.url` `#1d6e42`, `.muted` `rgba(22,35,27,.62)`, `.footer` `rgba(243,246,241,.6)`.
+- **Email type ramp:** the sizes are intentionally compressed (14–18px) for client compatibility — this is the sanctioned exception to the web ramp.
+
+## Motion
+
+- **One authored moment:** the hero console metrics count up on load — rAF-driven, 1400ms, `easeOutExpo`, es-VE number formatting (`toLocaleString('es-VE')`). Driven from `data-count-to` attributes in `app.js`.
+- **Ambient life:** the `.live-dot.pulse` ring (`@keyframes livePulse`, slow opacity ring) says the console is running.
+- **Micro-interaction:** theme-toggle color cross-fade (0.2s), button/arrow hovers, link hovers. All transitions ≤0.2s.
+- **Reduced motion:** a global `@media (prefers-reduced-motion: reduce)` sets every transition/animation to near-instant, and `app.js` checks the same flag to set count-up final values instantly without animating.
 
 ## Do's and Don'ts
 
 ### Do
-- **Do** keep the wall flat: page background is `--ink`. No gradients on the body.
-- **Do** use Big Shoulders Display only for declarations, wordmarks, the factura doc-type, and the FISCAL stamp. Other uses break the three-job rule.
-- **Do** use IBM Plex Mono with `font-feature-settings: "tnum" 1, "zero" 1` for every monetary value, date, SKU, and label. Tabular numbers keep the columns aligned.
-- **Do** keep depth as a hard offset shadow (4px / 4px 0 or 1.4rem / 1.4rem). No soft drop shadows.
-- **Do** anchor every Spanish-facing surface in `es-VE` and write copy first, translate never.
-- **Do** let the legacy ghost be the only motion. New animations need a world reason; default to no.
-- **Do** use the full token library (`--ink-soft`, `--ink-deep`, `--amber-glow`, `--amber-shadow`, `--stamp-deep` are reserved for future surfaces — define them once, inherit them everywhere).
+- **Do** ship new surfaces in the shared token system — components reference `var(--*)` only, so both themes stay free.
+- **Do** use Sora for all display/body and IBM Plex Mono for data and fiscal figures only, with tabular numerals.
+- **Do** keep green as the action/live signal and amber as the warning. Never swap their jobs.
+- **Do** use soft shadows and 8/12/16px radii. No hard offset slabs.
+- **Do** write copy in es-VE first; translate never.
+- **Do** respect `prefers-reduced-motion` — a new animation needs a world reason, and it must have a reduced-motion path.
 
 ### Don't
-- **Don't** round anything except the FISCAL stamp. Buttons, nav pills, cards, the factura: 90° corners.
-- **Don't** use fiscal red outside the FISCAL stamp. No red buttons, red borders, red lines.
-- **Don't** put a kicker, eyebrow, or section number above a heading. The display face carries the weight on its own.
-- **Don't** introduce glass, blur, or `backdrop-filter` as decoration. The wall is matte.
-- **Don't** use Tailwind utility chains in component CSS — write the world in semantic class names (`.cta`, `.factura`, `.declaration`). Tailwind v4 is loaded for the `@source` path only.
-- **Don't** ship a 1px border under a soft shadow. That is the ghost card and it is not in this world.
-- **Don't** switch the wall to a light theme or alternate palette. The wall is the night wall; alternate themes break the mural.
-- **Don't** close the open product decisions from `PRODUCT.md` (final OSS license, sucursales, inventory costing, direct SENIAT integration, offline depth, legacy importers, cloud pricing, tenant identification) by inventing UI for them. They are listed under the Overview and future work must not silently close them.
+- **Don't** introduce a second display typeface or decorative mono. One family + data mono is the system.
+- **Don't** add glass, blur, or `backdrop-filter` as decoration. The world is matte and legible.
+- **Don't** use Tailwind utility chains in component CSS — write the world in semantic class names (`.cta`, `.console-card`, `.panel`). Tailwind v4 is loaded for the `@source` path only.
+- **Don't** place hard offset shadows, 90° corners, or the old mural tokens (`--paper`, `--ink`, `--stamp`, Big Shoulders) in new work.
+- **Don't** ship a light-only or dark-only surface; every new page runs both themes.
+- **Don't** close the open product decisions from `PRODUCT.md` by inventing UI for them (fiscal tiers, sucursales, costing, cloud pricing).
 
 ## Implementation Status
 
-The current built world (one page, `templates/welcome.html`, served from the existing Masonite route) ships the welcome mural as a single screen. Component-by-component status:
+The world is built across landing, auth, and the app shell, served from the existing Masonite routes.
 
 | Ingredient | Status |
 |---|---|
-| `.wall` (night wall background) | Present |
-| `.legacy-ghost` + scroll fade | Present (motion idiom) |
-| `.topbar` (brand + meta + nav) | Present |
-| `.brand` wordmark + `.brand-mark` SVG | Present |
-| `.topbar-meta` (Vol/Edición/Tipo) | Present, hidden < 960px |
-| `.topbar-nav` (Entrar / Crear mi negocio →) | Present, links to `/login` and `/register` |
-| `.hero` two-column layout | Present |
-| `.hero-title` (TETRA wordmark) | Present |
-| `.hero-sub` (Spanish product description) | Present |
-| `.declaration` ("se diseña / se sufre") | Present |
-| `.hero-cta` (Crear mi negocio + Iniciar sesión) | Present, links to `/register` and `/login` |
-| `.factura-stage` + `.factura-shadow` amber slab | Present |
-| `.factura` (painted invoice card) | Present (sample data — not generated) |
-| `.factura-stamp` (FISCAL circle) | Present |
-| `.billing` block (11 feature pills) | Present |
-| `.foot` (Pintado para PyMEs venezolanas) | Present |
-| `tailwindcss` import + `@source` directive | Present (in `resources/css/app.css`) |
-| Bunny fonts CDN (Big Shoulders Display / Sora / IBM Plex Mono) | Present |
-| `/register` and `/login` destination pages | **Stub** — routes exist (`routes/web.py` per `PRODUCT.md` § Evidence on Hand) but the current handlers redirect without rendering views; per `PRODUCT.md` the auth views are not yet built |
-| `/logout` form | **Stub** — route exists, behavior is placeholder |
-| Login, register, forgot/reset, verify email screens | **Deferred** — not designed, not built |
-| Dashboard, ERP modules (Productos, Ventas, Almacenes, Facturación, Clientes, Reportes) | **Deferred** — see "Open product decisions" in Overview |
+| Theme system (inline init + toggle + localStorage) | Present — all layouts |
+| Sora + IBM Plex Mono Bunny CDN | Present |
+| `.brand-mark` green tile SVG | Present — landing, auth, app, errors |
+| `.topbar` + `.theme-toggle` | Present — landing, auth, app |
+| Landing hero + `.console-card` live demo (count-up, bars, activity, fiscal chips) | Present — `welcome.html` |
+| Count-up motion + livePulse + reduced-motion kill | Present — `app.js` |
+| `.billing` module strip + `.foot` | Present |
+| Auth shell (showcase + form pane + mobile brand) | Present — `auth/layout.html` |
+| App shell (page head, panels, data tables, summary, badges) | Present — `app/layout.html` + module templates |
+| Error pages (`standalone`, green slab framing kept sunset SVGs) | Present |
+| Maintenance page | Present (no route — template only) |
+| Email layout (forest re-tone, Sora, inline-safe ramp) | Present |
+| Tailwind v4 `@source "../../templates"` | Present — `resources/css/app.css` |
+| `/register` and `/login` destination pages | **Stub** — routes exist; per `PRODUCT.md` handlers redirect without rendering views (auth views are pre-built in `templates/auth/`) |
+| `/logout` form | **Stub** — route exists, behavior placeholder |
+| Dashboard / module data (live queries behind the console demo) | **Deferred** — hero uses labeled sample data; wiring real aggregates is future work |
 | Fiscal pricing tiers, plan badges, comparison tables | **Deferred** — out of scope until managed-cloud pricing is decided |
-| Per-tenant theming, light theme, role theming | **Deferred** — the world is committed dark/ink; alternate themes would break the mural |
-| Reserved tokens (`--ink-soft`, `--ink-deep`, `--amber-glow`, `--amber-shadow`, `--stamp-deep`) | **Defined, unused in v1** — the pattern vocabulary future surfaces inherit |
+| Reserved tokens, secondary surfaces | **Deferred** — the token system is the extension point |

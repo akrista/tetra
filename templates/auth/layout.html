@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token }}">
     <title>{% block title %}Entrar — Tetra{% endblock %}</title>
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('tetra-theme');
+                var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            } catch (e) {}
+        })();
+    </script>
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.bunny.net/css?family=big-shoulders-display:400,700,800,900|sora:400,500,600|ibm-plex-mono:400,500,600&display=swap">
+        href="https://fonts.bunny.net/css?family=sora:400,500,600,700,800|ibm-plex-mono:400,500,600&display=swap">
     <link href="/static/css/app.css" rel="stylesheet">
 </head>
 <body>
@@ -19,18 +28,18 @@
             <aside class="auth-showcase">
                 <a class="auth-brand" href="/" aria-label="Volver a la página principal de Tetra">
                     <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <polygon points="20,3 3,28 20,37" fill="#f1ead6" />
-                        <polygon points="20,3 37,28 20,37" fill="#e0a020" />
+                        <rect width="40" height="40" rx="10" fill="var(--primary)" />
+                        <path d="M12 11h16v4.5h-5.75V29h-4.5V15.5H12V11z" fill="var(--primary-ink)" />
                     </svg>
                     Tetra
                 </a>
 
                 <div>
-                    <p class="auth-declaration">La factura que <em>se diseña</em>.<br>No la que <span class="strike">se sufre</span>.</p>
+                    <p class="auth-declaration">Tu negocio, <span class="accent">en vivo</span>.<br>La consola de tus operaciones.</p>
 
                     <ul class="auth-features" style="margin-top: 2rem;">
-                        <li>Código abierto</li>
-                        <li>Self-hosted</li>
+                        <li>Inventario y ventas en tiempo real</li>
+                        <li>Facturación fiscal SENIAT</li>
                         <li>SENIAT · IVA · IGTF</li>
                         <li>VES + USD</li>
                     </ul>
@@ -41,10 +50,19 @@
 
             <!-- Right Form Pane -->
             <main class="auth-form-pane" id="main">
+                <button type="button" class="theme-toggle auth-theme-toggle" data-theme-toggle aria-label="Cambiar tema" title="Cambiar tema">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                    </svg>
+                </button>
                 <a class="auth-brand auth-mobile-brand" href="/" aria-label="Volver a la página principal de Tetra">
                     <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <polygon points="20,3 3,28 20,37" fill="#f1ead6" />
-                        <polygon points="20,3 37,28 20,37" fill="#e0a020" />
+                        <rect width="40" height="40" rx="10" fill="var(--primary)" />
+                        <path d="M12 11h16v4.5h-5.75V29h-4.5V15.5H12V11z" fill="var(--primary-ink)" />
                     </svg>
                     Tetra
                 </a>
