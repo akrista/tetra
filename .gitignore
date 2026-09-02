@@ -46,6 +46,7 @@ storage/framework/views/*
 .github/agents/
 .github/hooks/
 .github/skills/
+.github/prompts/
 
 .impeccable/config.local.json
 .impeccable/live/
